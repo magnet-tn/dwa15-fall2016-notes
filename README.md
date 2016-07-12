@@ -9,7 +9,7 @@ Short URL: <http://notes.dwa15.com>
 Use http://gitprint.com if you want to create .pdfs or printable versions of the notes.
 
 ## Reporting issues
-Use [Github's Issues section for this repository]() to report any issues with the notes.
+Use [Github's Issues section for this repository](https://github.com/susanBuck/dwa15-fall2016-notes/issues) to report any issues with the notes.
 
 Examples of the kind of issues that may need reporting:
 + Typos
