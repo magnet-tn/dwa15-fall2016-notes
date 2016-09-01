@@ -50,7 +50,7 @@ That's it! Your local server for Mac is installed, running, and tested.
 
 ## XAMPP Setup on Windows
 
-Download **[XAMPP for Windows v5.6.24 (PHP 5.6.24)](https://www.apachefriends.org/xampp-files/5.6.24/xampp-osx-5.6.24-0-installer.dmg)**.
+Download **[XAMPP for Windows v5.6.24 (PHP 5.6.24)](https://www.apachefriends.org/xampp-files/5.6.24/xampp-win32-5.6.24-0-VC11-installer.exe)**.
 
 Install XAMPP...
 
