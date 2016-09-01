@@ -1,4 +1,4 @@
-Nano was briefly covered in the Primer section, but lets take a closer look at why you would want to use nano, and instructions on how to use nano as an administrator.
+Nano was briefly covered in the Primer section, but let's take a closer look at why you would want to use nano, and instructions on how to use nano as an administrator.
 
 ---
 

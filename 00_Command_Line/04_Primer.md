@@ -89,7 +89,7 @@ Enter the text `This is just a test` into the file.
 Then, here are the steps to save your changes in nano:
 
 1. Hit `ctrl` + `x` to save your changes.
-2. Nano will ask you to type in the letter `y` to confirm your save. 
+2. Nano will ask you to type in the letter `y` to confirm your save.
 3. After typing in `y`, hit Enter.
 
 To confirm your changes were made, you can use the `cat` (concatenate) command which will output the contents of any text file directly in the console:
@@ -111,7 +111,7 @@ $ rm -i example.txt
 remove example.text? (type 'y' for yes and hit Enter)
 ```
 
-Note the addition of the `-i`... this is a **flag** which is how you send extra instructions when using commands. 
+Note the addition of the `-i`... this is a **flag** which is how you send extra instructions when using commands.
 
 In this case the `i` flag is short for `interactive`, meaning it'll ask you before deleting files. It's a good habit to use the `i` flag when working with `rm` so you don't accidentally delete anything you didn't mean to.
 
@@ -159,6 +159,6 @@ Note the addition of the `r` flag, which is needed for recursively removing dire
 ## In conclusion...
 There is a lot more you can do in CL besides working with files and directories. The above exercise was just to get you familiar with working with commands and some basic directory navigation.
 
-See [Common Commands](https://github.com/susanBuck/notes/blob/master/07_Command_Line/05_Common-commands.md) for a quick cheat sheet on all the commands we used above.
+See [Common Commands](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/00_Command_Line/05_Common-commands.md) for a quick cheat sheet on all the commands we used above.
 
 <!-- https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management -->

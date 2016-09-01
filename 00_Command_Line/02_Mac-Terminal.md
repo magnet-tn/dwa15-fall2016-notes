@@ -2,6 +2,7 @@ On Macs, Bash shell is accessed via an included application called **Terminal**.
 
 Find it in `/Users/ComputerName/Applications/Utilities/` or just type `Terminal` into Spotlight.
 
+The following instructions show some customizations you can do with Terminal. Implementing these changes are not required for this course, but doing so will teach you some neat tricks, and give you practice interacting with CL.
 
 ## Customizing
 

@@ -32,7 +32,7 @@ If you see **two little green dots** next to *Apache* and *MySQL Server*, you kn
 
 <img src='http://making-the-internet.s3.amazonaws.com/vc-mamp-mac-all-systems-go@2x.png' class='' style='max-width:723px; width:100%' alt=''>
 
-If either of these services don't start up, you'll want to read these notes: [__Debugging your local server__](https://github.com/susanBuck/dwa15-spring2016-notes/blob/master/01_Servers_and_Git/02_Debugging_local_servers.md).
+If either of these services don't start up, you'll want to read these notes: [__Debugging your local server__](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/01_Servers_and_Git/02_Debugging_local_servers.md).
 
 
 ### Your first file
@@ -50,7 +50,7 @@ That's it! Your local server for Mac is installed, running, and tested.
 
 ## XAMPP Setup on Windows
 
-Download **[XAMPP for Windows v5.6.15 (PHP 5.6.15)](https://www.apachefriends.org/xampp-files/5.6.15/xampp-win32-5.6.15-1-VC11-installer.exe)**.
+Download **[XAMPP for Windows v5.6.24 (PHP 5.6.24)](https://www.apachefriends.org/xampp-files/5.6.24/xampp-osx-5.6.24-0-installer.dmg)**.
 
 Install XAMPP...
 
@@ -63,7 +63,7 @@ If all goes well, *Apache* and *MySQL* in the *Modules* column should light up w
 
 <img src='http://making-the-internet.s3.amazonaws.com/vc-xampp-win-start-servers@2x.png' class='' style='max-width:723px; width:100%' alt=''>
 
-If either of these services don't start up, you'll want to read these notes: [__Debugging your local server__](https://github.com/susanBuck/dwa15-spring2016-notes/blob/master/01_Servers_and_Git/02_Debugging_local_servers.md).
+If either of these services don't start up, you'll want to read these notes: [__Debugging your local server__](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/01_Servers_and_Git/02_Debugging_local_servers.md).
 
 
 ### Your first file
