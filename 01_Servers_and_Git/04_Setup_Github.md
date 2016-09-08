@@ -19,7 +19,7 @@ There are a handful of different protocols you can use when communicating with G
 
 To work with the SSH protocol, you'll need to create a **SSH key** that gives you access to the Github.com servers.
 
->> *SSH keys provide a more secure way of logging into a server rather than using a password alone. While a password can eventually be cracked with a brute force attack, SSH keys are nearly impossible to decipher by brute force alone. Generating a **key pair** provides you with two long string of characters: a **public and a private key**. You can place the public key on any server, and then unlock it by connecting to it with a client that already has the private key. When the two match up, the system unlocks without the need for a password. You can increase security even more by protecting the private key with a passphrase.* -[source](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
+>> SSH keys provide a more secure way of logging into a server rather than using a password alone. While a password can eventually be cracked with a brute force attack, SSH keys are nearly impossible to decipher by brute force alone. Generating a **key pair** provides you with two long string of characters: a **public and a private key**. You can place the public key on any server, and then unlock it by connecting to it with a client that already has the private key. When the two match up, the system unlocks without the need for a password. You can increase security even more by protecting the private key with a passphrase. -[source](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
 
 
 
