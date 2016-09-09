@@ -118,7 +118,7 @@ apt-get is a package manager for Linux machines (your server is running with Lin
 We're going to use `apt-get` to install git:
 
 ```bash
-$ sudo apt-get install git
+$ apt-get install git
 ```
 
 Follow any given instructions to complete the git installation. When the install is done, confirm git is installed by checking the version:
