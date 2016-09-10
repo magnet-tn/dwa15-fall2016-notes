@@ -108,7 +108,7 @@ When everything is set and you're ready to go live...
 
 ## View hello-world on your local server
 
-Before deploying this hello-world example to a liver server in the next steps, make sure you can view it on your local server:
+Before deploying this hello-world example to a live server in the next steps, make sure you can view it on your local server:
 
 1. Change your local server's document root to point to `/path/to/your/htdocs/hello-world/`
 2. Restart your local server
