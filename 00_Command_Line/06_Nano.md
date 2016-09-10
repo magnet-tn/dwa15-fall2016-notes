@@ -46,13 +46,20 @@ After hitting `^X` it will ask you if you want to save. Type the letter `y` for 
 
 <img src='http://making-the-internet.s3.amazonaws.com/sysadmin-nano-edit@2x.png' class='' style='max-width:989px; width:100%' alt=''>
 
-For a quick reference of shortcuts available in nano check out this [cheat sheet](http://mintaka.sdsu.edu/reu/nano.html) and for more thorough documentation check out the [nano editor homepage](http://www.nano-editor.org/).
 
 
+
+## Other commands
+For a reference list of all available commands use `^X` (Help). You can also refer to the [nano documentation](https://www.nano-editor.org).
+
+Here are some commands I find I use most frequently:
+
++ `^K` Cut/delete a line
++ `^A` Go to the start of a line
++ `^E` Go to the end of a line
 
 
 ## Edit as admin
-
 Some files require administrator privileges to edit. You can examine the permissions of a file to find out if it does need admin privileges, or you'll simply find out when you go to edit a file as a regular user and you're told you don't have access.
 
 On Mac/Unix environments, you can prefix your `nano` command with [sudo](http://ss64.com/osx/sudo.html) to run the command as a *super user*:
