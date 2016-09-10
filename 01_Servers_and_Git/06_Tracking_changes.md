@@ -1,4 +1,4 @@
-With your local repository set up and connected your remote repository at Github.com, you're ready to start tracking changes to your project.
+With your local repository set up and connected to your remote repository at Github.com, you're ready to start tracking changes to your project.
 
 Everything we have done to this point has been setup steps that you only do once when starting a new project. Everything that follows reflects the kind of git work you'll do on a day-to-day basis.
 
