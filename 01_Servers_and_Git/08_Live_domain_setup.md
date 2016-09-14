@@ -36,9 +36,9 @@ Try again. Still not loading?
 
 
 ## Virtual Host / Subdomain setup
-Your primary domain is working, now lets get a subdomain working (`http://helloworld.domain.com`).
+Your primary domain is working, now lets get a subdomain working (`http://hello-world.domain.com`).
 
-In the above step, you already set up your DNS for the subdomain, making it so that traffic hitting `http://helloworld.domain.com` will point to your IP address.
+In the above step, you already set up your DNS for the subdomain, making it so that traffic hitting `http://hello-world.domain.com` will point to your IP address.
 
 Now we need to give the server instructions on what to do with this traffic.
 
@@ -56,7 +56,7 @@ To start, copy the following code into a new text editor window (your code edito
 </VirtualHost>
 ```
 
-In plain english, this VirtualBlock block code says: *when traffic comes in via `helloworld.dwa15-practice.biz`, point to the `/var/www/html/hello-world` directory*.
+In plain english, this VirtualBlock block code says: *when traffic comes in via `hello-world.dwa15-practice.biz`, point to the `/var/www/html/hello-world` directory*.
 
 Edit your VirtualHost block so that the the `ServerName` value matches *your* subdomain. In this example, it's set to `hello-world.dwa15-practice.biz` but you'll need to change it to match your domain.
 
