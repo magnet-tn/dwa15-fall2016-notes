@@ -51,6 +51,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 	$total = ($pennies * $penny_value) + ($nickles * $nickle_value) + ($dimes * $dime_value) + ($quarters * $quarter_value);
 
     # Prepend a dollar sign
+	# In PHP the period is used to concatenate values
     # $total = "$".$total;
 	?>
 
@@ -58,7 +59,7 @@ ini_set('display_errors', 1); # Display errors on page (instead of a log file)
 
 <body>
 
-	<img src='http://making-the-internet.s3.amazonaws.com/php-phpiggy-bank.png' alt='PHPiggy Bank Logo'>
+	<img src='http://making-the-internet.s3.amazonaws.com/php-phpiggy-bank.png' alt='PHPiggy Bank Logo' width='100'>
 
 	<p>
 	   You have <?php echo $total; ?> in your bank.
