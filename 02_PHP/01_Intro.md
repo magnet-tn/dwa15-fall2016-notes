@@ -10,7 +10,12 @@
 + Low barrier to entry; large community and resources.
 + Ubiquity: WordPress, Joomla, Drupal, Magento, etc. Available on many web hosts.
 + Maturing in regards to consistency, practices, speed.
-+ PHP >= 5.6 for this course ([release history](https://en.wikipedia.org/wiki/PHP#Release_history))
++ PHP >= 5.5.9 for this course ([release history](https://en.wikipedia.org/wiki/PHP#Release_history))
+
+<!--
+The DigitalOcean droplets we're working with come with PHP 5.5.9
+Laravel requires >= 5.6.4
+-->
 
 
 ## Documentation
