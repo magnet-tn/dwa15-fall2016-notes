@@ -1,5 +1,5 @@
 ## What is the PATH variable?
-When you run a command for a program in command line, it looks for the corresponding executable files using the directories listed in your *PATH variable* as a map. The *PATH variable* is one of many *Environment Variables* your computer uses.
+When you run a command for a program in command line, it looks for the corresponding executable files using the directories listed in your **PATH variable** as a map. The PATH variable is one of many **Environment Variables** your computer uses.
 
 Given this, when you add a new executable/program you wish to use via command line, you have to add its directory to your PATH variable.
 
@@ -15,9 +15,11 @@ One way to add new paths to your PATH variable is to add them in the `/etc/paths
 
 Let's use an example scenario of adding the PHP executable that comes with MAMP to your PATH. This will make it so that when you run the command `php` from command line, it will use MAMP's PHP executable.
 
-This semester, the version of PHP we're using with MAMP is `php5.6.10` ([screenshot](http://making-the-internet.s3.amazonaws.com/sysadmin-identify-latest-version-of-php-in-mamp.png)).
+This semester, the version of PHP we're using with MAMP is `php5.6.25`:
 
-If you dig into the MAMP folder contents on your computer, you can find a PHP executable in `/Applications/MAMP/bin/php/php5.6.10/bin`, so that's the path we want to add.
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-identify-latest-version-of-php-in-mamp@2x.png' style='max-width:500px'>
+
+If you dig into the MAMP folder contents on your computer, you can find a PHP executable in `/Applications/MAMP/bin/php/php5.6.25/bin`, so that's the path we want to add.
 
 <img src='http://making-the-internet.s3.amazonaws.com/sysadmin-finding-php-in-mamp@2x.png' style='max-width:1121px; width:100%' alt='Finding PHP in MAMP'>
 
@@ -29,8 +31,8 @@ $ sudo nano /etc/paths
 
 At the *start* of `/etc/paths`, add this line:
 
-```bash
-/Applications/MAMP/bin/php/php5.6.10/bin
+```xml
+/Applications/MAMP/bin/php/php5.6.25/bin
 ```
 
 <img src='http://making-the-internet.s3.amazonaws.com/sysadmin-append-to-paths@2x.png' style='max-width:1136px; width:100%' alt=''>
@@ -50,7 +52,7 @@ $ php -v
 ```
 
 Expected output:
-```bash
+```xml
 $ which php
 /Applications/MAMP/bin/php/php5.6.10/bin/php
 $ php -v
@@ -60,11 +62,11 @@ Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
 ```
 
 
-__Tips__
+__Alternative Method__
 
 Instead of editing `/etc/paths` you can also prepend your MAMP PHP path to the PATH variable by adding the following line to your `~/.bashrc` file:
 ```bash
-export PATH="/Applications/MAMP/bin/php/php5.6.10/bin":$PATH
+export PATH="/Applications/MAMP/bin/php/php5.6.25/bin":$PATH
 ```
 
 
@@ -114,13 +116,11 @@ $ php -v
 ```
 
 Expected output:
-```bash
-C:\Users\Susan
+```xml
 $ where.exe php
 C:\xampp\php\php.exe
 C:\xampp\php\php.exe
 
-C:\Users\Susan
 $ php -v
 PHP 5.6.15 (cli) (built: Oct 29 2015 12:40:36)
 Copyright (c) 1997-2015 The PHP Group

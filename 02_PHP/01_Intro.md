@@ -13,8 +13,10 @@
 + PHP >= 5.5.9 for this course ([release history](https://en.wikipedia.org/wiki/PHP#Release_history))
 
 <!--
+Sep 2016:
 The DigitalOcean droplets we're working with come with PHP 5.5.9
 Laravel requires >= 5.6.4
+MAMP ships with 5.6.26 (and 7, but we're still using 5.6 for now)
 -->
 
 
