@@ -64,7 +64,7 @@ If you compare the contents of your local application files to your production a
 
 This is because vendors are managed by Composer and *not* version controlled. This is configured via `.gitignore` which lists `vendor/` as a directory to ignore:
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-vendor-in-gitignore@2x.png' style='max-width:482px; width:100%'>
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-vendor-in-gitignore@2x.png' style='max-width:516px; width:100%'>
 
 Given this, you need to have Composer build your vendor's directory with this command:
 
