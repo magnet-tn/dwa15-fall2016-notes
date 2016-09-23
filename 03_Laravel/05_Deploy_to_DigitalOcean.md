@@ -92,24 +92,32 @@ Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
 
 You should see 5.5.9.
 
-Upgrade by running the following commands, one at a time. Follow any instructions when prompted to hit `Enter` or `Y` (Yes).
+To upgrade we'll use `apt-get`, a command line utility for managing packages on Ubuntu's systems (which our Droplets running on). We'll use apt-get to retrieve and install PHP 5.6 from [this repository](https://launchpad.net/~ondrej/+archive/ubuntu/php/+index).
 
+To do this, run the following 5 commands, one at a time. Follow the instructions to hit `Enter` or `Y` (yes) when prompted. I've provided a brief description of what each command does.
+
+
+Gets the necessary software we need to run the next command, `add-apt-repository`
 ```xml
 $ sudo apt-get install software-properties-common
 ```
 
+Add the repository we'll be using:
 ```xml
 $ sudo add-apt-repository ppa:ondrej/php
 ```
 
+With this new repository added, we retrieve updated package lists:
 ```xml
 $ sudo apt-get update
 ```
 
+And upgrade:
 ```xml
 $ sudo apt-get upgrade
 ```
 
+Now, we can do our last step, install php 5.6:
 ```xml
 $ sudo apt-get install php5.6
 ```
@@ -123,6 +131,8 @@ Copyright (c) 1997-2016 The PHP Group
 Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
     with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
 ```
+
+[ref](https://help.ubuntu.com/community/Repositories/CommandLine)
 
 ## Server setup complete!
 At this point, you DigitalOcean Droplet has everything it needs to run a Laravel app, so your next steps are to deploy.
