@@ -62,7 +62,7 @@ Likewise, most __Mac/MAMP users__ shouldn't need adjust any permissions because 
 
 The only instance where this might not work is if you're using a different local server setup that does *not* have the correct permission configuration. If that were the cause, you'd want to configure `storage` and `bootstrap/cache` to be writable by your web server.
 
-
+We'll talk specifically about setting permissions on DigitalOcean when we get to deployment in the next note set.
 
 
 ## Namespacing

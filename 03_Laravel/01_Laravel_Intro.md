@@ -44,7 +44,6 @@ Many PHP frameworks follow the **MVC Pattern**:
 
 
 ## Laravel
-*PHP That Doesn't Hurt*
 
 <http://laravel.com>
 
