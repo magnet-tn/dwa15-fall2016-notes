@@ -1,12 +1,12 @@
-The following steps outline the procedure for deploying a new laravel application on our DigitalOcean Droplets:
+The following steps outline the procedure for deploying a new Laravel application on our DigitalOcean Droplets:
+
+Summary:
 
 1. Clone your Laravel app
 2. Build the `vendor/` directory via `composer install`
 3. Set permissions
 4. Set up `.env` file
 5. Configure subdomain
-
-Read on for step by step details...
 
 
 

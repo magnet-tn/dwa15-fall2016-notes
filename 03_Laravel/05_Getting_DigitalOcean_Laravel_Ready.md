@@ -1,4 +1,3 @@
-# Deploy
 With your Laravel application up and running locally, we now need to deploy it on your production server.
 
 Before we can deploy, though, we need to do a few updates on your DigitalOcean server so it's set up with the necessary components that Laravel needs to run.
