@@ -92,22 +92,22 @@ Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
 
 You should see 5.5.9.
 
-To upgrade we'll use `apt-get`, a command line utility for managing packages on Ubuntu's systems (which our Droplets running on). We'll use apt-get to retrieve and install PHP 5.6 from [this repository](https://launchpad.net/~ondrej/+archive/ubuntu/php/+index).
+To upgrade we'll use `apt-get`, a command line utility for managing packages on Ubuntu's systems (which our Droplets run on). We'll use apt-get to retrieve and install PHP 5.6 from [this repository](https://launchpad.net/~ondrej/+archive/ubuntu/php/+index).
 
 To do this, run the following 5 commands, one at a time. Follow the instructions to hit `Enter` or `Y` (yes) when prompted. I've provided a brief description of what each command does.
 
 
-Gets the necessary software we need to run the next command, `add-apt-repository`
+First, get the necessary software we need to add a repository:
 ```xml
 $ sudo apt-get install software-properties-common
 ```
 
-Add the repository we'll be using:
+Then add the repository we'll be using:
 ```xml
 $ sudo add-apt-repository ppa:ondrej/php
 ```
 
-With this new repository added, we retrieve updated package lists:
+With this new repository added, retrieve the updated package list:
 ```xml
 $ sudo apt-get update
 ```
