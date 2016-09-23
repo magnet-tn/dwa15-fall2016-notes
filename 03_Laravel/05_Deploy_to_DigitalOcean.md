@@ -81,11 +81,22 @@ $ sudo service apache2 restart
 ## Upgrade PHP
 The image we built our DigitalOcean Droplets from came installed with PHP 5.5.9. The latest version of Laravel requires PHP 5.6.4, so we need to upgrade PHP on the Droplet.
 
-This can be done with the following commands:
+First, you can check your existing version with the `php -v` command, e.g.:
+```xml
+$ php -v
+PHP 5.5.9-1ubuntu4.19 (cli) (built: Jul 28 2016 19:31:33)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
+    with Zend OPcache v7.0.3, Copyright (c) 1999-2014, by Zend Technologies
+```
+
+You should see 5.5.9.
+
+Upgrade by running the following commands, one at a time:
 
 ```xml
 $ sudo apt-get install software-properties-common
-$ sudo add-apt-repository ppa:ondrej/php5-5.6
+$ sudo add-apt-repository ppa:ondrej/php
 $ sudo apt-get update
 $ sudo apt-get upgrade
 $ sudo apt-get install php5
