@@ -92,17 +92,28 @@ Zend Engine v2.5.0, Copyright (c) 1998-2014 Zend Technologies
 
 You should see 5.5.9.
 
-Upgrade by running the following commands, one at a time:
+Upgrade by running the following commands, one at a time. Follow any instructions when prompted to hit `Enter` or `Y` (Yes).
 
 ```xml
 $ sudo apt-get install software-properties-common
 $ sudo add-apt-repository ppa:ondrej/php
 $ sudo apt-get update
 $ sudo apt-get upgrade
-$ sudo apt-get install php5
+$ sudo apt-get install php5.6
 ```
 
-*(Note: On the evening of Sep 22 I'll be sharing a more thorough walk through of the above steps, as some of the screens are a little confusing.)*
+When you're done, you can confirm your PHP version:
+
+```xml
+root@lamp-512mb-nyc3-01:~# php -v
+PHP 5.6.26-1+deb.sury.org~trusty+1 (cli)
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
+```
+
+## Server setup complete!
+At this point, you DigitalOcean Droplet has everything it needs to run a Laravel app, so your next steps are to deploy.
 
 
 ## Clone your Laravel app
