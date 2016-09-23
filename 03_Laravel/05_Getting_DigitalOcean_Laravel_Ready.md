@@ -32,7 +32,7 @@ To do this, run the following commands, one at a time. Follow the instructions t
 ```xml
 $ sudo add-apt-repository ppa:ondrej/php
 $ sudo apt-get update
-$ sudo apt-get install php5.6 php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
+$ sudo apt-get install php5.6 php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml zip unzip
 $ sudo a2dismod php5
 $ sudo a2enmod php5.6
 $ sudo service apache2 restart
@@ -41,7 +41,7 @@ $ sudo service apache2 restart
 When you're done, you can confirm PHP command line is running the correct version:
 
 ```xml
-root@lamp-512mb-nyc3-01:~# php -v
+$ php -v
 PHP 5.6.26-1+deb.sury.org~trusty+1 (cli)
 Copyright (c) 1997-2016 The PHP Group
 Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
@@ -56,9 +56,19 @@ And you can confirm Apache is running the correct version by visiting `http://yo
 
 
 ## Install Composer on your Droplet
-Next, we need to install Composer.
 
-Move into your bin directory:
+Before you install Composer, first run the following command to set up a swap file on your Droplet:
+
+```xml
+$ sudo fallocate -l 4G /swapfile
+```
+
+>> "Swap is an area on a hard drive that has been designated as a place where the operating system can temporarily store data that it can no longer hold in RAM." -[ref](https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04)
+
+This preventative step will help when Composer runs memory intensive tasks.
+
+
+Now move into your bin directory where you'll install Composer:
 
 ```bash
 $ cd /usr/local/bin

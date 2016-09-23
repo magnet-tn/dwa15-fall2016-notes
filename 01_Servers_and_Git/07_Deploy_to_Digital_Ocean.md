@@ -93,7 +93,7 @@ $ ssh root@your-digital-ocean-ip-address
 
 When you first connect, you'll see the following message indicating it's a connection your computer does not recognize. Type `yes` and hit *Enter* to confirm the connection.
 
-```bash
+```xml
 The authenticity of host '104.236.13.65 (104.236.13.65)' can't be established.
 RSA key fingerprint is 4a:6e:8b:f2:39:27:ec:05:e1:46:e2:a6:80:e4:e9:d3.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -105,23 +105,21 @@ After you hit enter, if your SSH key is set up properly, you should be logged in
 
 ## Install Git
 
-Your new server does not come with git, so lets install that.
+Your new server does not come with Git, so let's install it. We'll do this using apt-get, a package manager for Ubuntu, which is the operating system your Droplet is using.
 
-First, while still SSH'd into your server, run this command to update *apt-get*:
+First, while still SSH'd into your server, run this command to receive a list of new packages:
 
-```bash
-apt-get update
+```xml
+$ apt-get update
 ```
 
-apt-get is a package manager for Linux machines (your server is running with Linux as its operating system); it's used to install and manage software.
-
-We're going to use `apt-get` to install git:
+Then run this command to install Git:
 
 ```bash
 $ apt-get install git
 ```
 
-Follow any given instructions to complete the git installation. When the install is done, confirm git is installed by checking the version:
+Follow any given instructions to complete the Git installation. When the install is done, confirm Git is installed by checking the version:
 
 ```bash
 $ git --version
@@ -137,25 +135,25 @@ In order to communicate between your DigitalOcean droplet and Github, you need t
 
 While still SSH'd in to your DigitalOcean droplet, generate a new SSH key:
 
-```bash
+```xml
 $ ssh-keygen -t rsa -C "your@email.com"
 ```
 
 Press enter:
 
-```bash
+```xml
 $ Enter file in which to save the key (/root/.ssh/id_rsa):
 ```
 
 Press enter:
 
-```bash
+```xml
 $ Enter passphrase (empty for no passphrase):
 ```
 
 Press enter:
 
-```bash
+```xml
 $ Enter same passphrase again:
 ```
 
@@ -166,7 +164,7 @@ You'll now have two new files in `/root/.ssh/`:
 
 Run the `cat` command to view the contents of the `id_rsa.pub` file.
 
-```bash
+```xml
 $ cat /root/.ssh/id_rsa.pub
 ```
 
@@ -176,7 +174,7 @@ Add this new key via [Github.com SSH settings](https://github.com/settings/ssh).
 
 Finally, test that the SSH keys work by running this command:
 
-```bash
+```xml
 $ ssh -T git@github.com
 ```
 

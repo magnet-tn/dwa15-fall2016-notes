@@ -74,9 +74,6 @@ $ composer install
 
 When that command is complete (it may take a few minutes), if you view the contents of your live app, you should now see a `vendor/` directory.
 
-If this command returns an error about memory/swap issues, see the troubleshooting section at the bottom of this page.
-
-
 
 ## Permissions
 As discussed when we were setting up Laravel on your local server, Laravel/the Apache web server needs write access to the `storage` and `bootstrap/cache` directories.

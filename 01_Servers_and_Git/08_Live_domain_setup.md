@@ -92,9 +92,9 @@ To make your VirtualHost changes take effect, restart Apache with this command:
 $ service apache2 restart
 ```
 
-Once the restart is complete, test out your subdomain `helloworld.yourdomain.com`.
+Once the restart is complete, test out your subdomain `http://hello-world.yourdomain.com`.
 
-<img src='http://making-the-internet.s3.amazonaws.com/version-control-subdomain-good@2x.png' class='' style='max-width:337px; width:75%' alt=''>
+<img src='http://making-the-internet.s3.amazonaws.com/version-control-subdomain-good@2x.png' class='' style='max-width:447px; width:75%' alt=''>
 
 
 ## Recap
