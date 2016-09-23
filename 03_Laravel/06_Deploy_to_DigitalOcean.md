@@ -200,6 +200,7 @@ __Log files__
 
 
 __Common issues__
+
 1. Lack of a `.env` file.
 2. Forgetting to build the `vendors` directory.
 3. Forgetting to set the necessary write permissions on `storage` and `bootstrap/cache`
