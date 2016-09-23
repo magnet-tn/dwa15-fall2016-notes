@@ -96,9 +96,21 @@ Upgrade by running the following commands, one at a time. Follow any instruction
 
 ```xml
 $ sudo apt-get install software-properties-common
+```
+
+```xml
 $ sudo add-apt-repository ppa:ondrej/php
+```
+
+```xml
 $ sudo apt-get update
+```
+
+```xml
 $ sudo apt-get upgrade
+```
+
+```xml
 $ sudo apt-get install php5.6
 ```
 
