@@ -37,6 +37,8 @@ Next, use this `composer` command to generate a new Laravel project. In this com
 $ composer create-project laravel/laravel foobooks --prefer-dist
 ```
 
+If you see warnings or errors after running this command, scroll down to see if your issue is listed in the __Troubleshooting__ section.
+
 When Composer is done working, move into the newly created project directory:
 
 ```
@@ -173,6 +175,20 @@ Your app is now set up locally and ready for development. In the next section, w
 
 
 ## Troubleshooting
+
+### When creating a new Laravel project
+
+If you see the following warning when installing:
+
+`Cannot create cache directory [your home directory].composer/cache/repo/https---packagist.org/, or directory is not writable. Proceeding without cache.`
+
+it means that the correct permissions are not set on your `.composer/cache` directory.
+
+This appears to be an issue that largely affects Mac users. You can fix this by running the following command:
+
+`sudo chown -R $USER $HOME/.composer`
+
+### When running your app
 If your new app won't run, the first place you'll want to check for clues is `storage/logs/laravel.log` as that's where Laravel outputs errors.
 
 If you see the error `No supported encrypter found.` chances are it means the `APP_KEY` in your environment file is not properly set.
