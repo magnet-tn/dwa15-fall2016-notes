@@ -176,17 +176,25 @@ Your app is now set up locally and ready for development. In the next section, w
 
 ## Troubleshooting
 
-### When creating a new Laravel project
+### Cache permission error when creating a new Laravel project with Composer
 
-If you see the following warning when installing:
+If you see the following warning when installing Laravel w/ Composer...
 
-`Cannot create cache directory [your home directory].composer/cache/repo/https---packagist.org/, or directory is not writable. Proceeding without cache.`
+```xml
+Cannot create cache directory [your home directory].composer/cache/repo/https---packagist.org/, or directory is not writable. Proceeding without cache.
+```
 
-it means that the correct permissions are not set on your `.composer/cache` directory.
+...it means that Composer lacks the appropriate permissions to write cache files to the `.composer/cache` directory
 
-This appears to be an issue that largely affects Mac users. You can fix this by running the following command:
+This appears to be an issue isolated to Mac users, and can be fixed by running the following command:
 
-`sudo chown -R $USER $HOME/.composer`
+```
+$ sudo chown -R $USER $HOME/.composer
+```
+
+This command will recursively (`-R`) set you (`$USER`) as the owner of the `.composer` directory. That way when you run commands as Composer, it will have the appropriate permissions needed to write files to its cache directory.
+
+
 
 ### When running your app
 If your new app won't run, the first place you'll want to check for clues is `storage/logs/laravel.log` as that's where Laravel outputs errors.
