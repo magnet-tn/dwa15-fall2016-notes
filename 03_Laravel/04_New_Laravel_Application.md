@@ -60,7 +60,7 @@ When using Laravel, the Apache web server needs *write* access for the `storage`
 
 But for __Windows/XAMPP users__, you shouldn't need to adjust permissions because Apache already has all the permissions it needs since it runs under Window's LocalSystem account  which has extensive read/write access to local paths.
 
-Likewise, most __Mac/MAMP users__ shouldn't need adjust any permissions because MAMP's Apache is running as the user who launched it, i.e. you, and as owner of all the files and directories in your project, you already have write access.
+Likewise, most __Mac/MAMP users__ shouldn't need to adjust any permissions because MAMP's Apache is running as the user who launched it, i.e. you, and as owner of all the files and directories in your project, you already have write access.
 
 The only instance where this might not work is if you're using a different local server setup that does *not* have the correct permission configuration. If that were the cause, you'd want to configure `storage` and `bootstrap/cache` to be writable by your web server.
 
