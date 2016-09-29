@@ -1,17 +1,19 @@
-# Digital Ocean Snapshots
+# Digital Ocean Backups
 
 DigitalOcean has a feature called *Snapshots* where you can take a, well, snapshot of your Droplet in it's current state, including all configurations and data.
 
-It's similar to DigitalOcean's backup features with these differences:
++ Snapshots cost $.05 per GB to store.
++ Snapshots can be created manually, or set to be created automatically once a week with DO's *Backup* feature (costs an additional $1/mo for the small plans we use)
 
-+ Backups are created automatically, wheras Snapshots are created manually
-+ Backups cost extra money, wheras Snapshots are free
+In this course, **you are not required to take snapshots** because the core of your work is redundantly stored on your local computer, on Github.com, *and* on DigitalOcean.
 
-If your Droplet is currently in a healthy state, it's wise to take a Snapshot. That way, if something bad happens you can rebuild a new Droplet from the healthy Snapshot.
+However, **some students choose to periodically take Snapshots throughout the semester for peace of mind** because while your code is redundantly backed-up, your server configuration and data, such as database contents, is not.
 
+For full details on backups/snapshots, see [DigitalOcean Backups and Snapshots Explained](https://www.digitalocean.com/community/tutorials/digitalocean-backups-and-snapshots-explained).
+
+In &ldquo;real world&rdquo; applications it is *strongly* recommended that you have a backup system for your server.
 
 ## Taking a Snapshot
-
 To take a Snapshot, you must first turn off your Droplet. This can be done while SSH'd into your server with this command:
 
 ```bash
@@ -22,7 +24,7 @@ This will turn off your droplet and exit you out of your SSH connection.
 
 Example:
 
-```bash
+```xml
 root@Feb4DynamicWebApplications:~# sudo poweroff
 root@Feb4DynamicWebApplications:~#
 Broadcast message from root@Feb4DynamicWebApplications
@@ -35,9 +37,7 @@ Connection to 162.243.95.209 closed.
 
 Once your Droplet is powered off, via the *Snapshot* section in DigitalOcean, you can create a new Snapshot:
 
-<img src='http://making-the-internet.s3.amazonaws.com/vc-take-the-snapshot@2x.png' style='width:100%; max-width:1000px'>
-
-In this example, I used the current date for the snapshot name, but you can use whatever name you'd like.
+<img src='http://making-the-internet.s3.amazonaws.com/sysadmin-take-the-snapshot@2x.png' style='width:100%; max-width:1000px'>
 
 How long it takes your Snapshot to complete will vary; in my tests it took anywhere from a few seconds to a few minutes. The more data you have on your server, the longer the Snapshot creation will take.
 
