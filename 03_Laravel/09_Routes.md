@@ -1,6 +1,6 @@
 Routes are declared using the `Route` facade in `routes/web.php`
 
-Among other things, `Route` gives you access to these [HTTP methods](http methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4):
+Among other things, `Route` gives you access to these [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4):
 
 1. GET
 2. POST
@@ -10,7 +10,8 @@ Among other things, `Route` gives you access to these [HTTP methods](http method
 Here's an example GET route for the Foobooks app:
 
 ```php
-Route::get('/books', function() {
+Route::get('/books', function()
+{
     return 'Here are all the books...';
 });
 ```
@@ -90,8 +91,8 @@ Again visit the URL excluding the title, `http://localhost/books/show` and note 
 Aside: In this example, we choose `title` as the identifier to load a specific book; how might this cause problems as this application grows?
 
 
-## Naming routes
 
+## Naming routes
 The `name` method can be added to routes to name a route.
 
 ```php
@@ -121,7 +122,7 @@ Instead of the `/books/show/{title?}` URI you might have chosen any of the follo
 
 However, it can be useful to have conventions to follow, as conventions can lead to more consistent code and fewer mistakes.
 
-Thus, in this course, we will follow the following conventions when designing routes for fundamental elements in our application, for example, books:
+Thus, in this course, we will follow the following conventions when designing routes for resources in our application, for example, books:
 
 | Method  | URI  | Action   | Name  |
 |---|---|---|---|---|
@@ -133,11 +134,16 @@ Thus, in this course, we will follow the following conventions when designing ro
 | PUT | /books/{book}  | update  | books.update  |
 | DELETE | /books/{book}   | destroy   | books.destroy  |
 
-(You can ignore the Action column for now; we'll come back to that when we discuss Controllers)
+Some notes about the conventions/patterns we see in this table:
 
-These conventions are modeled after the patterns seen with [RESTful design](https://en.wikipedia.org/wiki/Representational_state_transfer), and [Laravel Resource Controllers](https://laravel.com/docs/5.3/controllers#resource-controllers). We won't be using these two approaches in this course&mdash; we're just borrowing their URL conventions.
++ The resource name (`books`) is plural
++ Some of the URIs are the same, but the Methods are distinct so there won't be a conflict
++ Each name is prefixed with the name of the resource, e.g. `books.create`, `books.store`
++ You can ignore the Action column for now; we'll come back to that when we discuss Controllers
 
-Of course, there will be routes in our application not based upon specific elements. For example, you might have a *Contact Us* page, or a *Help & Support* page. For cases like these, you can come up with your own, user-friendly URIs, for example `/contact` and `/help`.
+These conventions are taken from the patterns seen with [RESTful design](https://en.wikipedia.org/wiki/Representational_state_transfer), and [Laravel Resource Controllers](https://laravel.com/docs/5.3/controllers#resource-controllers). (More on this in the next note set on Controllers)
+
+Of course, there will be routes in our application not based upon specific resources. For example, you might have a *Contact Us* page, or a *Help & Support* page. For cases like these, you can come up with your own, user-friendly URIs, for example `/contact` and `/help`.
 
 
 
