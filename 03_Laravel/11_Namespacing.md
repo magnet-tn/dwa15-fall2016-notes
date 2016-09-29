@@ -39,14 +39,14 @@ Autoloading is a feature PHP has which makes it possible to invoke classes in yo
 
 In other words, without autoloading you might have to write:
 
-```
+```php
 require('texter/Message.php');
 $message1 = new Texter\Message;
 ```
 
 ...but with autoloading, you can simply write:
 
-```
+```php
 $message1 = new Texter\Message;
 ```
 
@@ -56,7 +56,7 @@ In order for autoloading to work, you have to first give your autoloading functi
 
 In Laravel, there's some autoloading configured in `composer.json` :
 
-```
+```json
 "autoload": {
     "classmap": [
         "database"
