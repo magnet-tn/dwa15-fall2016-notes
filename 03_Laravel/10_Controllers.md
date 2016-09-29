@@ -175,6 +175,29 @@ Here's some teaching team contributed mnemonics to help remember the 7 REST acti
 + Dan: Pending...
 
 
+## Non-resource specific controllers
+Of course, not everything in your application will revolve around a well defined resource like Book, Author, Tag.
+
+As mentioned in the Routes notes, you will also have miscellaneous pages like a *Contact Us* page, or a *Help & Support* page.
+
+How you decide to organize these types of pages is up to you. You could create **Single Action Controllers** that are designed with a single action method called `__invoke()`
+
++ `HelpController.php`
+	+ Action method: `public function __invoke()`
+	+ Route: `Route::get('help', 'HelpController');`
+
++ `ContactController.php`
+	+ Action method: `public function __invoke()`
+	+ Route: `Route::get('contact', 'ContactController');`
+
+Or maybe you create one controller devoted to misc/static pages:
+
++ `PageController.php`
+	+ Action method: `public function help()`
+	+ Route: `Route::get('/help', 'PageController@help');`
+	+ Action method: `public function contact()`
+	+ Route: `Route::get('/contact', 'PageController@contact');`
+
 
 ## HTTP method spoofing for methods other than GET and POST
 HTML forms only support GET and POST methods, excluding methods like PUT and DELETE.

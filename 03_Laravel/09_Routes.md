@@ -25,7 +25,8 @@ The **second parameter** can be a *Closure* or a *Controller action*. We'll get 
 
 Whatever response is returned from the second parameter will be displayed in the browser.
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-route-breakdown@2x.png' class='' style='max-width:861px; width:100%' alt='Route breakdown'>
+Breakdown:
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-route-breakdown@2x.png' class='' style='max-width:504px; width:100%' alt='Route breakdown'>
 
 
 
@@ -125,13 +126,13 @@ Thus, in this course, we will follow the following conventions when designing ro
 
 | # | Method  | URI  | Action   | Name  |
 |---|---|---|---|---|---|
-|1| GET  | /books | index  | books.index  |
-|2| GET  | /books/create  | create  | books.create  |
-|3| POST  | /books  | store  | books.store   |
-|4| GET | /books/{book}  | show  | books.show   |
-|5| GET | /books/{book}/edit  | edit  | books.edit  |
-|6| PUT | /books/{book}  | update  | books.update  |
-|7| DELETE | /books/{book}   | destroy   | books.destroy  |
+|1| GET  | `/books` | index  | books.index  |
+|2| GET  | `/books/create`  | create  | books.create  |
+|3| POST  | `/books`  | store  | books.store   |
+|4| GET | `/books/{book}`  | show  | books.show   |
+|5| GET | `/books/{book}/edit`  | edit  | books.edit  |
+|6| PUT | `/books/{book}`  | update  | books.update  |
+|7| DELETE | `/books/{book}`   | destroy   | books.destroy  |
 
 Some notes about the conventions/patterns we see in this table:
 
