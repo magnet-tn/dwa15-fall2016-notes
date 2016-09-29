@@ -7,8 +7,11 @@
 
 + Controller classes are stored in `/app/Http/Controllers/`
 
+Aside: Controllers are Classes which are a fundamental part of Object Oriented Programming. If OOP is new to you, and you haven't already, be sure to review the [PHP OOP Primer](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/00_OOP_Primer.md).
+
 ## Structure
-Example:
+Create a new file in `/app/Http/Controllers/` called `BookController.php` and paste in the following code:
+
 ```php
 <?php
 
@@ -27,34 +30,12 @@ class BookController extends Controller
         return 'Display all the books';
 	}
 
-    /**
-     * Responds to requests to GET /books/{id}
-     */
-    public function show($id)
-	{
-        return 'Display book: '.$id;
-    }
-
-    /**
-     * Responds to requests to GET /books/create
-     */
-    public function create()
-	{
-        return 'Display form to create a new book';
-    }
-
-    /**
-     * Responds to requests to PUT /books
-     */
-    public function store()
-	{
-        return 'Process adding new book';
-    }
-
 } # end of class
 ```
 
-+ Put Controller class files `/app/Http/Controllers/`. This directory is psr-4 loaded in `composer.json`, so anything you put here will be readily available using the appropriate namespace.
+Notes:
+
++ Controller class files are stored in `/app/Http/Controllers/`. This directory is [psr-4](http://www.php-fig.org/psr/psr-4/) loaded in `/composer.json`, so anything you put here will be readily available using the appropriate namespace.
 
 + Naming
 	+ You can name a Controller class file anything you want, but it's a convention to suffix it with `Controller` and use [upper CamelCase style](https://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms) (ex: `BookController`).
@@ -68,7 +49,7 @@ class BookController extends Controller
 
 
 ## Connecting Routes to Controllers
-Once you have Controllers, you can set up your routes so that they invoke specific methods in controllers. This means you don't have to embed so much logic in your routes file as we've been doing this far.
+Once you have Controllers, you can set up your routes so that they invoke specific methods in controllers. This means you don't have to embed logic in your routes file as we've been doing this far.
 
 So, this...
 
@@ -78,9 +59,9 @@ Route::get('/books', function() {
 })->name('books.index');
 ```
 
-Will become this:
+Can become this:
 
-```
+```php
 Route::get('/books', 'BookController@index')->name('books.index');
 ```
 
@@ -107,7 +88,7 @@ class BookController extends Controller {
 
 After making these changes, visit `http://localhost/books` to make sure it's still working.
 
-If we create a route for each of the book actions, we'd end up with something like this:
+If we create a route -> controller connection for each of the book actions, we'd end up with something like this:
 
 ```php
 Route::get('/books', 'BookController@index')->name('books.index');
@@ -124,7 +105,7 @@ Route::delete('/books/{book}', 'BookController@destroy')->name('books.destroy');
 ## Use Artisan to make Controllers
 One of the things you'll discover as you learn more about Laravel is that there are helpful Artisan commands for generating common types of files. There is one such command for Controllers; try it out by navigating to your foobooks project directory and run this command:
 
-```
+```xml
 $ php artisan make:controller AuthorController
 ```
 
@@ -132,7 +113,7 @@ This should generate a new file at `/app/Controllers/AuthorController.php`; open
 
 Let's try that command again, but this time we'll make a controller for Tags, and append the `--resource` flag:
 
-```
+```xml
 $ php artisan make:controller TagController --resource
 ```
 
@@ -141,7 +122,7 @@ This should generate a new file at `/app/Controllers/TagController.php`; open it
 
 
 ## Resource Controllers
-You'll notice that the TagController is more fleshed out; it contains the methods `index`, `create`, `store`, `show`, `edit`, `update`, `destroy` while the AuthorController contained no methods.
+You'll notice that the TagController is more fleshed out; it contains the 7 methods `index`, `create`, `store`, `show`, `edit`, `update`, `destroy` while the AuthorController contained no methods.
 
 This happened because the addition of the `--resource` flag, which told Artisan to make a special kind of controller called a [Resource Controller](https://laravel.com/docs/5.3/controllers#resource-controllers).
 
@@ -171,7 +152,7 @@ Whether you choose to define all 7 routes, or use the short-cut is up to you.
 
 
 ## Aside: REST
-The idea of Resource Controllers comes from a design pattern called REST (**REpresentational State Transfer (REST)**), which is common to web applications.
+The idea of Resource Controllers comes from a design pattern called REST (**REpresentational State Transfer**), which is common to web applications.
 
 There are lots of fancy explanations for REST, but it can be boiled down to this:
 
@@ -183,17 +164,27 @@ The REST design pattern defines a set of conventions for how these actions will 
 
 An advantage of the REST design pattern is consistency. You'll often see APIs designed around REST, so that anyone who writes code to interact with that API can operate under a set of assumptions about how to work with the resources the API provides.
 
+Here's some teaching team contributed mnemonics to help remember the 7 REST actions:
+
+`ICSSEUD` (Index, Create, Store, Show, Edit, Update, Destroy)
+
++ Susan: *I Can See Sun Enveloped Under Dusk*
++ Jenni: *I Can Sense Silver Eggs Under Duress*
++ Katy: *I Can Sleep Soundly Even Upside Down*
++ Rebekah: Pending...
++ Dan: Pending...
+
 
 
 ## HTTP method spoofing for methods other than GET and POST
-HTML Forms only support GET and POST methods, excluding methods like PUT and DELETE.
+HTML forms only support GET and POST methods, excluding methods like PUT and DELETE.
 
 To get around this limitation, Laravel provides a way to &ldquo;spoof&rdquo; unsupported methods. This is done by injecting a hidden field `_method` with your forms:
 
 ```html
 <form method='POST'>
 	<input name='_method' type='hidden' value='PUT'>
-	<input type='text' name='title'>
+	<label>Title <input type='text' name='title'></label>
 </form>
 ```
 
@@ -215,9 +206,9 @@ Links only ever use the GET method though.
 To get around this, you can create a form that looks something like this:
 
 ```html
-<form method='POST' action=''>
+<form method='POST'>
 	<input name='_method' type='hidden' value='DELETE'>
-	<input name='id' value='1'>
+	<input name='id' type='hidden' value='1'>
 	<a href='javascript:void(0)' onClick='parentNode.submit();return false;'>Delete</a>
 </form>
 ```
@@ -225,9 +216,9 @@ To get around this, you can create a form that looks something like this:
 Even though this is structured as a form, it will not look like a form. You will just see a link that says <u>Delete</u>.
 
 This form contains the following key elements:
-+ The hidden _method field to spoof the `DELETE` method
-+ A hidden field with the id of the resource you want to delete, so that the id is passed with the request
-+ A button or link to submit the form. We used some inline JavaScript to show how a link can submit a form. (Inline JS is not ideal, but we're using it here for simplicity's sake)
++ The hidden _method field to spoof the `DELETE` method.
++ A hidden field with the id of the resource you want to delete, so that the id is passed with the request.
++ A button or link to submit the form. We used some inline JavaScript to show how a link can submit a form. Inline JS is not ideal, but we're using it here for simplicity's sake.
 
 
 ## Read More

@@ -1,4 +1,4 @@
-Routes are declared using the `Route` facade in `routes/web.php`
+Routes are declared using the [`Route` facade](https://laravel.com/api/master/Illuminate/Support/Facades/Route.html) in `routes/web.php`
 
 Among other things, `Route` gives you access to these [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.4):
 
@@ -10,13 +10,12 @@ Among other things, `Route` gives you access to these [HTTP methods](https://www
 Here's an example GET route for the Foobooks app:
 
 ```php
-Route::get('/books', function()
-{
+Route::get('/books', function() {
     return 'Here are all the books...';
 });
 ```
 
-The **first parameter** is a URI String that will trigger this route; in this case that's `/books`.
+The **first parameter** is a URI String, `/books`, that will trigger this route.
 
 I.e. if a user goes to `http://localhost/books` it will trigger this route.
 
@@ -38,7 +37,7 @@ Route::get('/books/create', function() {
 
 	$view  = '<form method="POST" action="/books/create">';
     $view .= csrf_field(); # This will be explained more later
-	$view .= 'Title: <input type="text" name="title">';
+	$view .= '<label>Title: <input type="text" name="title"></label>';
 	$view .= '<input type="submit">';
 	$view .= '</form>';
 	return $view;
@@ -86,7 +85,7 @@ Route::get('/books/show/{title?}', function($title = '') {
 });
 ```
 
-Again visit the URL excluding the title, `http://localhost/books/show` and note the difference.
+Again visit the URL excluding the title, `http://localhost/books/show`, and note the difference.
 
 Aside: In this example, we choose `title` as the identifier to load a specific book; how might this cause problems as this application grows?
 
@@ -124,62 +123,71 @@ However, it can be useful to have conventions to follow, as conventions can lead
 
 Thus, in this course, we will follow the following conventions when designing routes for resources in our application, for example, books:
 
-| Method  | URI  | Action   | Name  |
-|---|---|---|---|---|
-| GET  | /books | index  | books.index  |
-| GET  | /books/create  | create  | books.create  |
-| POST  | /books  | store  | books.store   |
-| GET | /books/{book}  | show  | books.show   |
-| GET | /books/{book}/edit  | edit  | books.edit  |
-| PUT | /books/{book}  | update  | books.update  |
-| DELETE | /books/{book}   | destroy   | books.destroy  |
+| # | Method  | URI  | Action   | Name  |
+|---|---|---|---|---|---|
+|1| GET  | /books | index  | books.index  |
+|2| GET  | /books/create  | create  | books.create  |
+|3| POST  | /books  | store  | books.store   |
+|4| GET | /books/{book}  | show  | books.show   |
+|5| GET | /books/{book}/edit  | edit  | books.edit  |
+|6| PUT | /books/{book}  | update  | books.update  |
+|7| DELETE | /books/{book}   | destroy   | books.destroy  |
 
 Some notes about the conventions/patterns we see in this table:
 
 + The resource name (`books`) is plural
-+ Some of the URIs are the same, but the Methods are distinct so there won't be a conflict
-+ Each name is prefixed with the name of the resource, e.g. `books.create`, `books.store`
++ Some of the URIs are the same (e.g. 1 and 3), but the Methods are distinct so there won't be a conflict
++ Each route name is prefixed with the name of the resource, e.g. `books.create`, `books.store`
 + You can ignore the Action column for now; we'll come back to that when we discuss Controllers
++ The route parameter for individual books (4,5,6,7) is generically listed as `{book}`, but in your actual application it might be something like `{title}`, or `{id}`, or whatever identifier you choose to look up a resource with.
 
 These conventions are taken from the patterns seen with [RESTful design](https://en.wikipedia.org/wiki/Representational_state_transfer), and [Laravel Resource Controllers](https://laravel.com/docs/5.3/controllers#resource-controllers). (More on this in the next note set on Controllers)
+
+If you were to flesh out all the above routes, you'd end up with this:
+
+```php
+# View all books
+Route::get('/books', function() {
+
+})->name('books.index');
+
+# Display form to add a new book
+Route::get('/books/create', function() {
+
+})->name('books.create');
+
+# Process form to add a new book
+Route::post('/books', function() {
+
+})->name('books.store');
+
+# Display an individual book
+Route::get('/books/{book}', function($book) {
+
+})->name('books.show');
+
+# Display form to edit an individual book
+Route::get('/books/{book}/edit', function($book) {
+
+})->name('books.edit');
+
+# Process form to save edits to an individual book
+Route::put('/books/{book}', function($book) {
+
+})->name('books.update');
+
+# Delete an individual book
+Route::delete('/books/{book}', function($book) {
+
+})->name('books.destroy');
+```
 
 Of course, there will be routes in our application not based upon specific resources. For example, you might have a *Contact Us* page, or a *Help & Support* page. For cases like these, you can come up with your own, user-friendly URIs, for example `/contact` and `/help`.
 
 
 
-
-## Set up a practice route
-In `routes/web.php` define a practice route:
-
-```php
-Route::get('/practice', function() {
-
-	echo 'Hello from the practice route...';
-
-})->name('practice');
-```
-
-Load this route ala `http://localhost/practice` and make sure you see *Hello from the practice route...* on the screen.
-
-For now on, whenever these notes say *"try this in your practice route"* we mean running the code in this route closure.
-
-For example, if we say:
-
->> Run `echo App::environment();` in your practice route to see how you can get Laravel to tell you what environment you're on.
-
-...we're expecting you to do this:
-
-```php
-Route::get('/practice', function() {
-	echo App::environment();
-});
-```
-
-
-
-
 ## Artisan routes
-Artisan is a PHP command line tool that ships with Laravel and provides many shortcuts and utilities for working with your application.
+[Artisan](https://laravel.com/docs/artisan) is a PHP command line tool that ships with Laravel and provides shortcuts and utilities for working with your application.
 
 For our first example of what Artisan can do, have it tell you what routes are set up in your application:
 
@@ -190,16 +198,19 @@ $ php artisan route:list
 Example output:
 
 ```xml
-+--------+----------+---------------------+------+---------+--------------+
-| Domain | Method   | URI                 | Name | Action  | Middleware   |
-+--------+----------+---------------------+------+---------+--------------+
-|        | GET|HEAD | /                   |      | Closure | web          |
-|        | GET|HEAD | api/user            |      | Closure | api,auth:api |
-|        | POST     | books/create        |      | Closure | web          |
-|        | GET|HEAD | books/create        |      | Closure | web          |
-|        | GET|HEAD | books/show/{title?} |      | Closure | web          |
-|        | GET|HEAD | practice            |      | Closure | web          |
-+--------+----------+---------------------+------+---------+--------------+
++--------+----------+-------------------+---------------+---------+--------------+
+| Domain | Method   | URI               | Name          | Action  | Middleware   |
++--------+----------+-------------------+---------------+---------+--------------+
+|        | GET|HEAD | /                 |               | Closure | web          |
+|        | GET|HEAD | api/user          |               | Closure | api,auth:api |
+|        | POST     | books             | books.store   | Closure | web          |
+|        | GET|HEAD | books             | books.index   | Closure | web          |
+|        | GET|HEAD | books/create      | books.create  | Closure | web          |
+|        | DELETE   | books/{book}      | books.destroy | Closure | web          |
+|        | PUT      | books/{book}      | books.update  | Closure | web          |
+|        | GET|HEAD | books/{book}      | books.show    | Closure | web          |
+|        | GET|HEAD | books/{book}/edit | books.edit    | Closure | web          |
++--------+----------+-------------------+---------------+---------+--------------+
 ```
 
 Note: The `php artisan` command must always be run from *within* your application directory.

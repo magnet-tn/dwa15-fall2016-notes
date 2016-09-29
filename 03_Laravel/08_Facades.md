@@ -35,17 +35,18 @@ In this instance, it's not actually a static invocation. It's simply a static-*l
 
 Here's how the Laravel documentation explains facades:
 
->> *Facades provide a &ldquo;static&rdquo; interface to classes that are available in the application's IoC container. Laravel ships with many facades, and you have probably been using them without even knowing it! Laravel "facades" serve as "static proxies" to underlying classes in the IoC container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.* -[src](http://laravel.com/docs/facades#facade-class-reference)
+>> *Facades provide a &ldquo;static&rdquo; interface to classes that are available in the application's IoC container. Laravel ships with many facades, and you have probably been using them without even knowing it! Laravel &ldquo;facades&rdquo; serve as &ldquo;static proxies&rdquo; to underlying classes in the IoC container, providing the benefit of a terse, expressive syntax while maintaining more testability and flexibility than traditional static methods.* -[src](http://laravel.com/docs/facades#facade-class-reference)
 
 
 ## Facades and their classes
-**Understanding that the facades you'll use throughout Laravel are really just static proxies for instantiated classes is important, because you'll want to know what those classes are in order to look up how to use them.**
+Understanding that the facades you'll use throughout Laravel are really just static proxies for instantiated classes is important, because you'll want to know what those classes are in order to look up how to use them.
 
 To help with this, here's a [list of facades and their underlying classes](http://laravel.com/docs/facades#facade-class-reference).
 
 For example:
-`Route` is a Facade for the `Router` class. Once you know that, it makes finding information in the API docs easier: [API: Router](http://devdocs.io/laravel/api/5.2/illuminate/routing/router).
+`Route` is a Facade for the `Router` class. Once you know that, it makes finding information in the API docs easier: [API: Router](https://laravel.com/api/5.3/Illuminate/Routing/Route.html).
 
+You can identify many facades in the [Laravel 5 cheatsheet](http://www.linxiang.info/l5-cs)&mdash; look for any class name followed by two colons, e.g. `File::`, `Request::`, `Session::`, etc.
 
 ## More info...
 
