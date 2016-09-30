@@ -1,4 +1,4 @@
-Within your local system, you'll eventually want to work on many different applications, sometimes even at the same time. Given this, it can be a drag to have to reconfigure your DocumentRoot for http://localhost every time you want to switch between apps.
+Within your local system, you'll eventually want to work on different applications, sometimes even at the same time. Given this, it can be a drag to have to reconfigure your DocumentRoot for http://localhost every time you want to switch between apps.
 
 In the following notes we'll set up __Virtual Hosts__ for individual apps so that you can have local URLs specific to each app you're working on.
 
@@ -140,8 +140,41 @@ This is what your `httpd-vhosts.conf` file might look like when you're done:
 
 Make sure you explicitly type in `http://foobooks.loc` with `http://` at the beginning. If you don't, your browser may just try and do a web search for `foobooks.loc` because it does not recognize `.loc` as a domain extension.
 
+## Fixing http://localhost
 
+After you make the above change you'll notice that http://localhost no longer works as expected&mdash; instead of pointing the document root you configure in MAMP/XAMPP, it will start pointing to the first VirtualHost block in your `httpd-vhosts.conf` file.
 
+To fix this, you should add a VirtualHost block specifically for http://localhost
+
+For Mac/MAMP users:
+```xml
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot /Applications/MAMP/htdocs
+    <Directory /Applications/MAMP/htdocs>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>
+```
+
+For Win/XAMPP users:
+```txt
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot c:\xampp\htdocs
+    <Directory c:\xampp\htdocs>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>
+```
+
+Don't forget to restart your server after making these changes.
 
 ## Summary
 
