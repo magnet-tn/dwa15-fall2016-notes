@@ -171,8 +171,6 @@ Here's some teaching team contributed mnemonics to help remember the 7 REST acti
 + Susan: *I Can See Sun Enveloped Under Dusk*
 + Jenni: *I Can Sense Silver Eggs Under Duress*
 + Katy: *I Can Sleep Soundly Even Upside Down*
-+ Rebekah: Pending...
-+ Dan: Pending...
 
 
 ## Non-resource specific controllers
