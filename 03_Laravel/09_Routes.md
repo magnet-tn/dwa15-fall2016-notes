@@ -79,7 +79,7 @@ To demonstrate this, replace the above /books/show route with this updated versi
 Route::get('/books/show/{title?}', function($title = '') {
 
     if($title == '') {
-        return 'Your request did not include a title.'
+        return 'Your request did not include a title.';
     }
 
 	return 'Results for the book: '.$title;
