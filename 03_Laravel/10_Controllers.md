@@ -109,7 +109,7 @@ One of the things you'll discover as you learn more about Laravel is that there 
 $ php artisan make:controller AuthorController
 ```
 
-This should generate a new file at `/app/Controllers/AuthorController.php`; open it up to examine the results.
+This should generate a new file at `/app/Http/Controllers/AuthorController.php`; open it up to examine the results.
 
 Let's try that command again, but this time we'll make a controller for Tags, and append the `--resource` flag:
 
@@ -117,7 +117,7 @@ Let's try that command again, but this time we'll make a controller for Tags, an
 $ php artisan make:controller TagController --resource
 ```
 
-This should generate a new file at `/app/Controllers/TagController.php`; open it up to examine the results and compare/contrast it with the AuthorController, then continue reading...
+This should generate a new file at `/app/Http/Controllers/TagController.php`; open it up to examine the results and compare/contrast it with the AuthorController, then continue reading...
 
 
 
