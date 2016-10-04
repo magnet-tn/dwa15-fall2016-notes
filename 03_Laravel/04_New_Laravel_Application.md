@@ -176,6 +176,17 @@ Your app is now set up locally and ready for development. In the next section, w
 
 ## Troubleshooting
 
+### Composer installs an older version of Laravel
+
+If Composer is downloading an older version of Laravel than you're expecting, it could be because your PHP in command line is out of date, and Composer is getting the latest version of Laravel supported by that version.
+
+Confirm by running `php --version`
+
+It should report back >= 5.6
+
+If it's 5.5 or less, you will get an older version of Laravel. Revisit the [Composer Setup](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/03_Composer_Setup.md) notes where it talks about checking/setting your PHP version in Command Line.
+
+
 ### Cache permission error when creating a new Laravel project with Composer
 
 If you see the following warning when installing Laravel w/ Composer...
@@ -191,6 +202,8 @@ This appears to be an issue isolated to Mac users, and can be fixed by running t
 ```
 $ sudo chown -R $USER $HOME/.composer
 ```
+
+Run this command exactly as is, you do not need to edit it, as `$USER` and `$HOME` are dynamic variables that will fill in with your computer's username and home directory.
 
 This command will recursively (`-R`) set you (`$USER`) as the owner of the `.composer` directory. That way when you run commands as Composer, it will have the appropriate permissions needed to write files to its cache directory.
 
