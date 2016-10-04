@@ -56,9 +56,9 @@ Expected output:
 $ which php
 /Applications/MAMP/bin/php/php5.6.10/bin/php
 $ php -v
-PHP 5.6.10 (cli) (built: Jul  6 2015 14:28:54)
-Copyright (c) 1997-2015 The PHP Group
-Zend Engine v2.6.0, Copyright (c) 1998-2015 Zend Technologies
+PHP 5.6.25 (cli) (built: Aug 25 2016 17:30:26)
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
 ```
 
 
