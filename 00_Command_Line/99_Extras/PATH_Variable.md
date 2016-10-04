@@ -62,16 +62,6 @@ Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
 ```
 
 
-__Alternative Method__
-
-Instead of editing `/etc/paths` you can also prepend your MAMP PHP path to the PATH variable by adding the following line to your `~/.bashrc` file:
-```bash
-export PATH="/Applications/MAMP/bin/php/php5.6.25/bin":$PATH
-```
-
-
-
-
 
 ## Windows: Edit your PATH
 
