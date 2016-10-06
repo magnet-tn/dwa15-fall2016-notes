@@ -65,5 +65,7 @@ smtp⏎
 => null
 ```
 
+Tip: Hit `ctrl` + `c` to exit the Tinker console.
+
 + __Pros:__ Convenient for quick examples, requires not additional files to clutter up your project.
 + __Cons:__ For lecture purposes this isn't ideal, because there will be no history of the examples, but feel free to use during your own practice.
