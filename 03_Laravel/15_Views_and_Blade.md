@@ -199,7 +199,7 @@ In this new file, add these contents:
 
 Note how everything in this master layout is pretty generic&mdash; it could be applied to any page of our Foobooks app thus far.
 
-Next, *replace* the content in `/resources/views/books/show.blade.php` so it contains just this:
+Next, *replace* the content in `/resources/views/book/show.blade.php` so it contains just this:
 
 ```html
 @extends('layouts.master')
