@@ -287,7 +287,7 @@ __Alternative Option 2__:
 
 If you anticipate using a class frequently throughout your application, you can create a global __alias__ for it.
 
-This is done in `/app/config/app.php` in the array called `aliases`.
+This is done in `/config/app.php` in the array called `aliases`.
 
 Here's an example of how you'd update the `aliases` array in `/config/app.php` to add Random:
 
