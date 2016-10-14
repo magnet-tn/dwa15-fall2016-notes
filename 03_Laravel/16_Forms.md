@@ -114,7 +114,7 @@ In addition to POST and GET, there are three other HTTP methods you might wish t
 To do this, use the `method_field` helper method:
 
 ```html
-<form action='/books/create'>
+<form method='POST' action='/books/create'>
     {{ method_field('PUT') }}
     {{ csrf_field() }}
     <input type='text' name='title'>
@@ -134,7 +134,7 @@ This will add a hidden field to your form, used to indicate to Laravel what meth
 ## Accessing form data using the Request class
 As mentioned above, when we submit this form it submits to the `store` method in the BookController:
 
-```
+```php
 /**
  * Store a newly created resource in storage.
  *
