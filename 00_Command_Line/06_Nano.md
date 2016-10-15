@@ -50,7 +50,7 @@ After hitting `^X` it will ask you if you want to save. Type the letter `y` for 
 
 
 ## Other commands
-For a reference list of all available commands use `^X` (Help). You can also refer to the [nano documentation](https://www.nano-editor.org).
+For a reference list of all available commands use `^G` (Help). You can also refer to the [nano documentation](https://www.nano-editor.org).
 
 Here are some commands I find I use most frequently:
 
