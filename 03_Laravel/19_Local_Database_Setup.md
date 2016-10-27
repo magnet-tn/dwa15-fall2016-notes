@@ -70,7 +70,7 @@ DB_PASSWORD=
 
 
 ## Test your connection
-Here's a route you can put in your `routes.php` file to test that the database connection is working:
+Here's some temprary code you can put in your routes file to test that the database connection is working:
 
 ```php
 Route::get('/debug', function() {

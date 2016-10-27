@@ -41,6 +41,7 @@ Open up your the books migration file, and you should see something like this:
 ```php
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -66,6 +67,7 @@ class CreateBooksTable extends Migration
         //
     }
 }
+
 ```
 
 Every generated migration has this boilerplate code with a `up()` and `down()` method.
