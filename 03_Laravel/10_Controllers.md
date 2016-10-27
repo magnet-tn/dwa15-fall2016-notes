@@ -17,6 +17,8 @@ Create a new file in `/app/Http/Controllers/` called `BookController.php` and pa
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 
 class BookController extends Controller
