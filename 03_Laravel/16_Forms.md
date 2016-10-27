@@ -151,7 +151,7 @@ Up until this point, we retrieved data from the form using PHP's superglobal `$_
 
 In Laravel, request information is made available via a `Request` class. To use the `Request` class, start by making sure this `use` statement at the top of your Controller:
 
-```py
+```php
 use Illuminate\Http\Request;
 ```
 
