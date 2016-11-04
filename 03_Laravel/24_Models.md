@@ -17,7 +17,7 @@ Laravel's QueryBuilder is a Laravel component (accessed by the [DB Facade](https
 Reminder: Add `use DB;` at the top of Controller files that will use the DB Facade. Alternatively, you can prefix any `DB` invocation with a slash, e.g. `\DB::`. The reason you need to do this is covered in [Namespacing in Controllers](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/12_Namespacing_in_Controllers.md).
 
 ### Read
-For example, here's how you would retrieve all the rows from the `books` table using the DB `get()` method, demonstrated the foobook's PracticeController:
+For example, here's how you would retrieve all the rows from the `books` table using the DB `get()` method, demonstrated in the foobook's PracticeController:
 
 ```php
 <?php
@@ -337,7 +337,7 @@ There are many different kinds of constraints and fetch methods you can use. The
 
 FYI: The fetch method always returns something called a Collection object, which is covered in more detail later.
 
-With more information about query structure behind us, lets move on Updating and Deleting.
+With more information about query structure behind us, let's move on to Updating and Deleting.
 
 
 
@@ -410,7 +410,7 @@ Here's a big picture view of this:
 
 <img src='http://making-the-internet.s3.amazonaws.com/laravel-orm-books@2x.png' style='max-width:1059px; width:100%' alt='ORM Diagram'>
 
-If any of the above discussion of objects, properties, etc. is confusing, taking a moment to refresh your memory on [Object Oriented Programming](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/00_OOP_Primer.md).
+If any of the above discussion of objects, properties, etc. is confusing, take a moment to refresh your memory on [Object Oriented Programming](https://github.com/susanBuck/dwa15-fall2016-notes/blob/master/03_Laravel/00_OOP_Primer.md).
 
 
 

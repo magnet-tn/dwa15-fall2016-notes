@@ -24,7 +24,7 @@ So, do a `git status` locally. Are there any new or changed migration or seeder 
 
 When you first SSH into your DigitalOcean server, you should see a welcome message (a.k.a &ldquo;[message of the day](http://en.wikipedia.org/wiki/Motd_(Unix)&rdquo;).
 
-This message includes a note telling you your default MySQL password is saved in `/root/.digitalocean_password`
+This message includes a note indicating that your default MySQL password is saved in `/root/.digitalocean_password`
 
 <img src='http://making-the-internet.s3.amazonaws.com/laravel-motd-mysql-password@2x.png' style='max-width:923px;' alt=''>
 
