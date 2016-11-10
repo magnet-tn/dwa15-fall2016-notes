@@ -42,7 +42,7 @@ In the following steps we'll set up everything this relationship needs to work.
 ## Create the authors table
 First we need to create, build, and run the migration to create a new `authors` table.
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-authors-table@2x.png' style='max-width:452px; width:100%' alt=''>
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-authors-table@2x.png' style='max-width:241px; width:100%' alt=''>
 
 Create the migration:
 ```bash
