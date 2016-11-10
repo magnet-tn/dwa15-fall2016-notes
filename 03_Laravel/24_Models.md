@@ -6,7 +6,7 @@ In Laravel, there are two approaches to interacting with the database:
 1. Using the __[QueryBuilder](http://laravel.com/docs/queries)__
 2. Using __Models__ and __[Eloquent ORM](http://laravel.com/docs/eloquent)__
 
-These notes will briefly discuss the QueryBuilde then focus mostly on Models.
+These notes will briefly discuss the QueryBuilder then focus mostly on Models.
 
 
 
