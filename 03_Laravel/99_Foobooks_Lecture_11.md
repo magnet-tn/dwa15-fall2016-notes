@@ -56,7 +56,6 @@ Route::get('/', 'BookController@index');
 ## Add a book
 `books/create.blade.php` has been updated to include all the fields:
 
-+ author
 + published
 + cover
 + purchase_link

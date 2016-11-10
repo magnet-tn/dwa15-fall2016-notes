@@ -71,7 +71,7 @@ Because of the above points, you can pass a Collection to a View where it can be
 
 Controller:
 ```php
-function getIndex() {
+function index() {
     $books = Book::all();
     return view('books.index')->with('books', $books);
 }
