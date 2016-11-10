@@ -81,8 +81,8 @@ Update this so we have some default values to rapidly test with, e.g.
 Data to use:
 + Title: Green Eggs & Ham
 + Published date: 1960
-+ Image URL: http://prodimage.images-bn.com/pimages/9780394800165_p0_v4_s192x300.jpg
-+ Purchase URL: http://www.barnesandnoble.com/w/green-eggs-and-ham-dr-seuss/1100170349
++ Image URL: `http://prodimage.images-bn.com/pimages/9780394800165_p0_v4_s192x300.jpg`
++ Purchase URL: `http://www.barnesandnoble.com/w/green-eggs-and-ham-dr-seuss/1100170349`
 
 In BookController.php `store()` validate the additional fields (add these after the title validation)
 
