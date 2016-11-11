@@ -5,11 +5,8 @@ Goals:
 + No markup in the controller
 + Any content coming from the database should be displayed using `{{ }}`, not `{{!! !!}}`.
 
-I've created a branch on foobooks that demonstrates the following procedure in action; relevant files:
+Code from the following procedure is demonstrated on a branch of the foobooks code called [flash-message-views](https://github.com/susanBuck/foobooks/tree/flash-message-views).
 
-+ [foobooks/blob/flash-message-views/app/Http/Controllers/BookController.php#L103](https://github.com/susanBuck/foobooks/blob/flash-message-views/app/Http/Controllers/BookController.php#L103)
-+ [foobooks/blob/flash-message-views/resources/views/layouts/master.blade.php#L25](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/layouts/master.blade.php#L25)
-+ [foobooks/blob/flash-message-views/resources/views/messages/updated-book.blade.php](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/messages/updated-book.blade.php)
 
 
 ## Procedure
@@ -23,6 +20,8 @@ return redirect('/books');
 + The 0th element in the array is the name of the view to used (`book_edits_saved`)
 + The 1th element in the array is an array of data that should be available to that view.
 
+[See code...](https://github.com/susanBuck/foobooks/blob/flash-message-views/app/Http/Controllers/BookController.php#L103)
+
 Then in the master layout use Blade's `@include` method to include the flash_view, passing it the necessary data.
 ```php
 @if(Session::get('flash_view') != null)
@@ -31,9 +30,12 @@ Then in the master layout use Blade's `@include` method to include the flash_vie
     </div>
 @endif
 ```
+[See code...](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/layouts/master.blade.php#L25)
 
 The view at `/resources/views/messages/updated-book.blade.php` contains:
 
 ```php
 Your book <b>{{ $title }}</b> was added.
 ```
+
+[See code...](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/messages/updated-book.blade.php)
