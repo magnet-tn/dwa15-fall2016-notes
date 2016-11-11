@@ -55,7 +55,7 @@ public function example4() {
 
     $books = Book::orderBy('published','desc')->get();
 
-    $this->printBooks($books);
+    dump($books->toArray());
 
     # Underlying SQL: select * from `books` order by `published` desc
 
@@ -70,7 +70,7 @@ public function example3() {
 
     $books = Book::orderBy('title','asc')->get();
 
-    $this->printBooks($books);
+    dump($books->toArray());
 
     # Underlying SQL: select * from `books` order by `title` asc
 }
@@ -84,7 +84,7 @@ public function example2() {
 
     $books = Book::where('published','>',1950)->get();
 
-    $this->printBooks($books);
+    dump($books->toArray());
 
     # Underlying SQL: select * from `books` where `published` > '1950'
 
@@ -100,7 +100,7 @@ public function example1() {
     # Ref: https://laravel.com/docs/5.2/queries#ordering-grouping-limit-and-offset
     $books = Book::orderBy('id', 'desc')->get()->take(5);
 
-    $this->printBooks($books);
+    dump($books->toArray());
 
     # Underlying SQL: select * from `books` order by `id` desc
 
