@@ -13,8 +13,8 @@ Session::flash('flash_view', ['book_edits_saved', ['title' => $book->title]]);
 return redirect('/books');
 ```
 
-The 0th element in the array is the name of the view to used (`book_edits_saved`)
-The 1th element in the array is an array of data that should be available to that view.
++ The 0th element in the array is the name of the view to used (`book_edits_saved`)
++ The 1th element in the array is an array of data that should be available to that view.
 
 Then in the master layout use Blade's `@include` method to include the flash_view, passing it the necessary data.
 ```php
