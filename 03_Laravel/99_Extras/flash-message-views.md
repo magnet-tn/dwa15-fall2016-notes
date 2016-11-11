@@ -5,6 +5,13 @@ Goals:
 + No markup in the controller
 + Any content coming from the database should be displayed using `{{ }}`, not `{{!! !!}}`.
 
+I've created a branch on foobooks that demonstrates the following procedure in action; relevant files:
+
++ [foobooks/blob/flash-message-views/app/Http/Controllers/BookController.php#L103](https://github.com/susanBuck/foobooks/blob/flash-message-views/app/Http/Controllers/BookController.php#L103)
++ [foobooks/blob/flash-message-views/resources/views/layouts/master.blade.php#L25](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/layouts/master.blade.php#L25)
++ [foobooks/blob/flash-message-views/resources/views/messages/updated-book.blade.php](https://github.com/susanBuck/foobooks/blob/flash-message-views/resources/views/messages/updated-book.blade.php)
+
+
 ## Procedure
 In the controller, right before the redirect, flash a variable called `flash_view` that is set to an array.
 
