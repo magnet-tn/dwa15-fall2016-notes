@@ -13,7 +13,7 @@ Code from the following procedure is demonstrated on a branch of the foobooks co
 In the controller, right before the redirect, flash a variable called `flash_view` that is set to an array.
 
 ```php
-Session::flash('flash_view', ['book_edits_saved', ['title' => $book->title]]);
+Session::flash('flash_view', ['updated-book', ['title' => $book->title]]);
 return redirect('/books');
 ```
 
