@@ -146,6 +146,8 @@ public function run()
 ## Connect authors and books tables
 Now that we have an `authors` table, we need to modify the `books` table adding a foreign key field that will connect each book to a row in the `authors` table.
 
+Naming convention for foreign key fields: singularize the table name you're connecting to and append `_id`. In this case, that means the foreign key field name is `author_id`.
+
 Create the migration:
 ```bash
 $ php artisan make:migration connect_authors_and_books
