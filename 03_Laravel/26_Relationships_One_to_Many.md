@@ -305,7 +305,7 @@ Here's an example where we create a book, and then associate that book with an a
 
 ```php
 # To do this, we'll first create a new author:
-$author = new \App\Author;
+$author = new Author;
 $author->first_name = 'J.K';
 $author->last_name = 'Rowling';
 $author->bio_url = 'https://en.wikipedia.org/wiki/J._K._Rowling';
