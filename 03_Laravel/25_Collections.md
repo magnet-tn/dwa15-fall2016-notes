@@ -144,7 +144,7 @@ Some of these method names may be familiar, as they also exist as QueryBuilder m
 
 ## Query Responsibility
 
-When building a web application, it's good practice minimize the number of queries you're making to the database, as excess database calls can slow down a site's load time.
+When building a web application, it's good practice to minimize the number of queries you're making to the database, as excess database calls can slow down a site's load time.
 
 One way you can optimize your application is to fetch data from an existing Collection, rather than making another round-trip query on the database. This comes in handy if, for example, you're dealing with a result set in which you want to suss out multiple things from that set: all the books, the first book, the last book, etc. Rather than doing a separate query for each of these needs, you can shift the responsibility over to the Collection and use the data you already fetched...
 
