@@ -5,29 +5,35 @@ This should not be considered a stand-alone document; for full details please re
 
 
 ## Book index clean-up
-Updated `books.index.blade.php`, putting each book in a section so it can be styled. Also added author info.
+Updated the `book/index.blade.php` view, putting each book in a section so it can be styled.
+
+Also added *Edit* and *View* links.
 
 ```php
-@foreach($books as $book)
-    <section class='book'>
-        <h2>{{ $book->title }}</h2>
+<h1>All the books</h1>
 
-        <h3>{{ $book->author->first_name }} {{ $book->author->last_name }}</h3>
+@if(sizeof($books) == 0)
+    You have not added any books, you can <a href='/book/create'>add a book now to get started</a>.
+@else
+    <div id='books' class='cf'>
+        @foreach($books as $book)
 
-        <img src='{{ $book->cover }}' alt='Cover for {{$book->title}}'>
+            <section class='book'>
+                <a href='/books/{{ $book->id }}'><h2 class='truncate'>{{ $book->title }}</h2></a>
 
-        <br><a href='/book/edit/{{$book->id}}'>Edit</a>
-    </section>
-@endforeach
+                <img class='cover' src='{{ $book->cover }}' alt='Cover for {{ $book->title }}'>
+
+                <br>
+                <a href='/books/{{ $book->id }}/edit'><i class='fa fa-pencil'></i> Edit</a><br>
+                <a href='/books/{{ $book->id }}'><i class='fa fa-eye'></i> View</a><br>
+            </section>
+
+        @endforeach
+    </div>
+@endif
 ```
 
-Need to eager load the authors:
-
-```php
-$books = Book::with('author')->orderBy('id','desc')->get();
-```
-
-Added `books_index.css`:
+Added `/public/css/book.css`:
 ```css
 .book {
     border:1px solid #ccc;
@@ -54,37 +60,25 @@ Linked it at the top of `books/index.blade.php`:
 
 ```php
 @section('head')
-    <link href='/css/books_index.css' rel='stylesheet'>
+    <link href='/css/book.css' rel='stylesheet'>
 @stop
 ```
 
 
 
-## Edit Book + Authors
-Previously when `author` was just a text field in the `books` table, we just needed a text input to update the author:
-
-```html
-<label for='title'>* Author:</label>
-<input
-    type='text'
-    id='author'
-    name="author"
-    value='{{$book->author}}'
->
-```
-
-Now that we've extracted authors to their own table, we need to switch our approach from a text input to a dropdown filled with all the authors.
+## Author dropdown
+To associate Authors with Books we'll use a dropdown filled with authors.
 
 To make this happen, we first need an __array of authors__ where the key is the author `id` and the value is the author `name`.
 
 ```php
 # BookController.php
-public function getEdit($id = null) {
+public function edit($id) {
 
     $book = Book::find($id);
 
     # Get all the authors
-    $authors = Author::orderBy('last_name','ASC')->get();
+    $authors = Author::orderBy('last_name', 'ASC')->get();
 
     # Organize the authors into an array where the key = author id and value = author name
     $authors_for_dropdown = [];
@@ -95,7 +89,7 @@ public function getEdit($id = null) {
     [...]
 
     # Make sure $authors_for_dropdown is passed to the view
-    return view('books.edit')->with([
+    return view('book.edit')->with([
         'book' => $book,
         'authors_for_dropdown' => $authors_for_dropdown
     ]);
@@ -107,7 +101,7 @@ Then, we can construct the dropdown (`<select>`) using this data:
 <label for='author_id'>* Author:</label>
 <select id='author_id' name='author_id'>
     @foreach($authors_for_dropdown as $author_id => $author_name)
-         <option value='{{$author_id}}' {{ ($book->author_id == $author_id) ? 'SELECTED' : '' }}>
+         <option value='{{ $author_id }}' {{ ($book->author_id == $author_id) ? 'SELECTED' : '' }}>
              {{$author_name}}
          </option>
      @endforeach
@@ -115,7 +109,7 @@ Then, we can construct the dropdown (`<select>`) using this data:
 ```
 
 
-Now in `postEdit()` set the `author_id` using the data from the dropdown in `$request`:
+Now in `update()` set the `author_id` using the data from the dropdown in `$request`:
 ```php
 $book->author_id = $request->author_id;
 ```
@@ -133,7 +127,7 @@ Rather than duplicate the &ldquo;get authors for dropdown&rdquo; code, we should
 # app/Author.php
 public static function authorsForDropdown() {
 
-    $authors = Author::orderBy('last_name','ASC')->get();
+    $authors = Author::orderBy('last_name', 'ASC')->get();
     $authors_for_dropdown = [];
     foreach($authors as $author) {
         $authors_for_dropdown[$author->id] = $author->last_name.', '.$author->first_name;
@@ -143,14 +137,14 @@ public static function authorsForDropdown() {
 }
 ```
 
-Then in `getEdit()`:
+Then in `edit()`:
 ```
 $authors_for_dropdown = Author::authorsForDropdown();
 ```
 
 __Discussion:__ &ldquo;Skinny controllers, fat models&rdquo;
 
-Other frequently used queries can also be abstracted, for example:
+Other frequently used queries can also be abstracted, for example the following method could be added to the Book model:
 
 ```php
 public static function getAllBooksWithAuthors() {
@@ -159,12 +153,11 @@ public static function getAllBooksWithAuthors() {
 ```
 
 ## On your own
-Apply the same procedures covered above to switch the *Add a Book* page from a author text input to an author drop down.
-
+Update the *Add a Book* page to also have an author dropdown.
 
 
 ## Using Tags/Many to Many
-Last lecture, we set everything up (migrations, seeders, models) for a tags feature, now let's look at how we'd implement tags.
+We have everything set up for a tags feature&mdash; migrations, seeders, models&mdash; now let's look at how we'd implement tags.
 
 We need a way to associate tags with books (either from the *Edit Book* or *Create Book* page)
 
@@ -183,15 +176,15 @@ To accomplish this, we'll need to gather the following data:
 First, a `getTagsForCheckboxes()` method in the Tag model:
 
 ```php
-# Tag.php
-public function getTagsForCheckboxes() {
+# app/Tag.php
+public static function getTagsForCheckboxes() {
 
     $tags = Tag::orderBy('name','ASC')->get();
 
     $tagsForCheckboxes = [];
 
     foreach($tags as $tag) {
-        $tagsForCheckboxes[$tag['id']] = $tag;
+        $tagsForCheckboxes[$tag['id']] = $tag->name;
     }
 
     return $tagsForCheckboxes;
@@ -199,31 +192,27 @@ public function getTagsForCheckboxes() {
 }
 ```
 
-Then update `BookController.php` `getEdit()`:
+Then update the `edit` method in `BookController`:
 
 ```php
 # BookController.php
-public function getEdit($id = null) {
+public function edit($id = null) {
 
     # Get this book and eager load its tags
     $book = Book::with('tags')->find($id);
 
-    [...]
-
     # Get all the possible tags so we can include them with checkboxes in the view
-    $tags_for_checkbox = Tag()::getTagsForCheckboxes();
+    $tags_for_checkbox = Tag::getTagsForCheckboxes();
 
-    /*
-    Create a simple array of just the tag names for tags associated with this book;
-    will be used in the view to decide which tags should be checked off
-    */
+    # Create a simple array of just the tag names for tags associated with this book;
+    # will be used in the view to decide which tags should be checked off
     $tags_for_this_book = [];
     foreach($book->tags as $tag) {
         $tags_for_this_book[] = $tag->name;
     }
     # Results in an array like this: $tags_for_this_book['novel','fiction','classic'];
 
-    return view('books.edit')
+    return view('book.edit')
         ->with([
             'book' => $book,
             'authors_for_dropdown' => $authors_for_dropdown,
@@ -235,16 +224,16 @@ public function getEdit($id = null) {
 ```
 
 ```php
-# /resources/views/books/edit.blade.php
+# /resources/views/book/edit.blade.php
 
 [...]
 
-@foreach($tags_for_checkboxes as $tag_id => $tag_name)
+@foreach($tags_for_checkbox as $tag_id => $tag_name)
     <input
         type='checkbox'
         value='{{ $tag_id }}'
         name='tags[]'
-        {{ (in_array($tag_id,$tags_for_this_book)) ? 'CHECKED' : '' }}
+        {{ (in_array($tag_name, $tags_for_this_book)) ? 'CHECKED' : '' }}
     >
     {{ $tag_name }} <br>
 @endforeach
@@ -255,10 +244,16 @@ public function getEdit($id = null) {
 
 ```php
 # BookController.php
-public function postEdit(Request $request) {
+public function update(Request $request, $id) {
 
-    [...]
+    # [...Validation removed for brevity...]
 
+    # Find and update book
+    $book = Book::find($request->id);
+    $book->title = $request->title;
+    $book->cover = $request->cover;
+    $book->published = $request->published;
+    $book->purchase_link = $request->purchase_link;
     $book->save();
 
     # If there were tags selected...
@@ -271,7 +266,13 @@ public function postEdit(Request $request) {
         $tags = [];
     }
 
-    [...]
+    # Above if/else could be condensed down to this: $tags = ($request->tags) ?: [];
+
+    # Sync tags
+    $book->tags()->sync($tags);
+    $book->save();
+
+    # [... Finish removed for brevity ..]
 
 }
 ```

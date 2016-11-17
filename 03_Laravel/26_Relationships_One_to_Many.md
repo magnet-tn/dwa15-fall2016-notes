@@ -160,7 +160,8 @@ public function up()
     Schema::table('books', function (Blueprint $table) {
 
         # Remove the field associated with the old way we were storing authors
-        $table->dropColumn('author');
+        # Whether you need this or not depends on whether your books table is built with an authors column
+        # $table->dropColumn('author');
 
 		# Add a new INT field called `author_id` that has to be unsigned (i.e. positive)
         $table->integer('author_id')->unsigned();
@@ -301,9 +302,9 @@ Now that we've made these Models &ldquo;aware&rdquo; of these relationships, we 
 ## Associate an author with a book
 Here's an example where we create a book, and then associate that book with an author.
 
-To do this, we'll first create a new author:
 
 ```php
+# To do this, we'll first create a new author:
 $author = new \App\Author;
 $author->first_name = 'J.K';
 $author->last_name = 'Rowling';
@@ -311,11 +312,8 @@ $author->bio_url = 'https://en.wikipedia.org/wiki/J._K._Rowling';
 $author->birth_year = '1965';
 $author->save();
 dump($author->toArray());
-```
 
-Then we'll create a new book and associate it with the author:
-
-```php
+# Then we'll create a new book and associate it with the author:
 $book = new Book;
 $book->title = "Harry Potter and the Philosopher's Stone";
 $book->published = 1997;
@@ -352,7 +350,7 @@ $book = Book::first();
 $author = $book->author;
 
 # Output
-echo $book->title.' was written by '.$author->first_name.' '.$author->last_name;
+dump($book->title.' was written by '.$author->first_name.' '.$author->last_name);
 dump($book->toArray());
 ```
 

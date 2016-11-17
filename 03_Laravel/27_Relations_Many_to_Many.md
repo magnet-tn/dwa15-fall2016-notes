@@ -18,12 +18,12 @@ Example:
 
 <img src='http://making-the-internet.s3.amazonaws.com/laravel-book-tag-pivot@2x.png' style='max-width:882px;' alt=''>
 
-+ Also known as: &ldquo;lookup table&rdquo;, &ldquo;join table&rdquo;.
++ Also known as: *lookup table*, *join table*.
 + Table naming convention:
     + Use the singular version of the name of the two tables you're joining, separated with an underscore, in alphabetical order.
     + Ex: If you're joining the `books` table with the `tags` table, the resulting pivot table name would be `book_tag`.
 + Foreign keys:
-    + A pivot table links together tables together using __foreign keys__.
+    + A pivot table links together tables together using __foreign keys (FK)__.
     + Convention says FK field names should consist of the associated table name, singularized, and appended with `_id`.
     + Ex: The FK to the `books` table is `book_id` and the FK to the `tags` table is `tag_id`.
 
@@ -69,23 +69,30 @@ $ php artisan make:seeder TagsTableSeeder
 ```
 
 The `run()` method of this seeder should look like this:
+
 ```php
+public function run()
+{
+    $data = ['novel','fiction','classic','wealth','women','autobiography','nonfiction'];
 
-    public function run()
-    {
-        $data = ['novel','fiction','classic','wealth','women','autobiography','nonfiction'];
-
-        foreach($data as $tagName) {
-            $tag = new Tag();
-            $tag->name = $tagName;
-            $tag->save();
-        }
+    foreach($data as $tagName) {
+        $tag = new Tag();
+        $tag->name = $tagName;
+        $tag->save();
     }
 }
 ```
 
-Don't forget to update the `run()` method in `/database/seeds/DatabaseSeeder.php` to invoke this new seeder, as we've done previously.
+Finally, update `/database/seeds/DatabaseSeeder.php` to invoke this new seeder, as we've done previously.
 
+```php
+public function run()
+{
+    $this->call(TagsTableSeeder::class); # <-- NEW
+    $this->call(AuthorsTableSeeder::class);
+    $this->call(BooksTableSeeder::class);
+}
+```
 
 
 
@@ -95,7 +102,7 @@ We've just created the `tags` table, and the `books` table already exists, so no
 Following the pivot table naming conventions described above, this table should be called `book_tag`.
 
 Create a new migration file to create the `book_tag` table:
-```bash
+```xml
 $ php artisan make:migration create_book_tag_table
 ```
 
@@ -154,7 +161,7 @@ public function books() {
 
 ## Seed the book_tag pivot table
 Create the seeder:
-```
+```xml
 $ php artisan make:seeder BookTagTableSeeder
 ```
 
@@ -189,7 +196,17 @@ public function run()
 }
 ```
 
+And, of course, update `DatabaseSeeder.php`:
 
+```php
+public function run()
+{
+    $this->call(TagsTableSeeder::class);
+    $this->call(AuthorsTableSeeder::class);
+    $this->call(BooksTableSeeder::class);
+    $this->call(BookTagTableSeeder::class); # <-- NEW
+}
+```
 
 __Make sure your migrations and seeds have been run without error before proceeding...__
 
@@ -203,11 +220,12 @@ Here's what we've accomplished:
 
 With that all set up, we can look at an example of retrieving a single book with its tags:
 ```php
-$book = Book::where('title','=','The Great Gatsby')->first();
+$book = Book::where('title', '=', 'The Great Gatsby')->first();
 
-echo $book->title.' is tagged with: ';
+dump($book->title);
+
 foreach($book->tags as $tag) {
-    echo $tag->name.' ';
+    dump($tag->name);
 }
 ```
 
@@ -216,9 +234,9 @@ Or many books with their tags (note how tags are eagerly loaded to reduce querie
 $books = Book::with('tags')->get();
 
 foreach($books as $book) {
-    echo '<br>'.$book->title.' is tagged with: ';
+    dump($book->title.' is tagged with: ');
     foreach($book->tags as $tag) {
-        echo $tag->name.' ';
+        dump($tag->name);
     }
 }
 ```
@@ -226,7 +244,7 @@ foreach($books as $book) {
 
 
 ## More...
-The above is a basic setup and simple example of a Many to Many relationship. We will continue work on this in the upcoming lecture to also cover:
+The above is a basic setup and simple example of a Many to Many relationship. We will continue work on this by updating foobooks to cover:
 
 + Associating tags with books.
 + Deleting tags from books.
