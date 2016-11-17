@@ -1,8 +1,10 @@
 ## Database Relationships
 A web application typically contains multiple database tables, and those tables often relate to one another in some way.
 
-For insight into this, consider the following database design diagram, outlining the table design we'll be working towards with Foobooks. Each blue arrow represents a relationship between two tables.
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-foobooks-schema@2x.png' style='max-width:908px;' alt=''>
+For insight into this, consider the following Foobooks database schema, outlining the table design we'll be working towards.
+
+Each blue arrow represents a relationship between two tables.
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-foobooks-schema@2x.png' style='max-width:875px;' alt=''>
 
 (Diagrams created with <https://dbdesigner.net>)
 
@@ -28,21 +30,25 @@ In these notes, we'll start with the __One To Many__ relationship.
 ## Authors
 Continuing with the Foobooks example, we can expand on our database design to include an `authors` table.
 
-This addition introduces the following relationship to our database:
-
-__[One to Many](http://laravel.com/docs/eloquent#one-to-many)__
+This addition introduces the following relationship to our database, [One to Many](http://laravel.com/docs/eloquent#one-to-many):
 
 + Author *has many* Books
-+ Inverse: Books *belongs to* Author
++ Books *belongs to* Author
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-one-to-many@2x.png' style='max-width:1072px; width:100%' alt='One To Many Relationship'>
+Example:
 
-In the following steps we'll set up everything this relationship needs to work.
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-one-to-many@2x.png' style='max-width:644px; width:100%' alt='One To Many Relationship'>
 
-## Create the authors table 
+The database design necessary for this relationship looks like this:
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-one-to-many-schema@2x.png' style='max-width:314px;' alt=''>
+
+
+
+## Create the authors table
 First we need to create, build, and run the migration to create a new `authors` table.
 
-<img src='http://making-the-internet.s3.amazonaws.com/laravel-authors-table@2x.png' style='max-width:241px; width:100%' alt=''>
+<img src='http://making-the-internet.s3.amazonaws.com/laravel-authors-table@2x.png' style='max-width:px;' alt=''>
+
 
 Create the migration:
 ```bash
