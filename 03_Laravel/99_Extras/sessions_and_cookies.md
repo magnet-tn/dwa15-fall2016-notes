@@ -1,3 +1,5 @@
+*Note: This bonus topic was last checked in Spring 2016, and has not been reviewed for Fall 2016; some edits to procedures may be needed.*
+---
 Working with Laravel's authentication system is a bit of a black box. With a few simple method invocations you can build a fully functioning login system, without really understanding how it's working.
 
 Given this, let's open the box and take a closer look at how the system works, specifically the relationship between __Cookies__, __Sessions__ and the `users` table in the database.
