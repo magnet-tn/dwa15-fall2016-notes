@@ -2,7 +2,7 @@ The following is a very rough outline of the modifications I'll make to foobooks
 
 This should not be considered a stand-alone document; for full details please refer to the lecture video and the foobooks code source.
 
-## Integrating your existing data and users/auth
+## Integrating your existing data and authentication
 Couple different approaches:
 
 1. *One to Many*: Every book is connected to a single user
@@ -98,7 +98,7 @@ public function books() {
 
 
 ## Your Books
-Setup complete! Now lets make it so that when a user is logged in they only see *their* books.
+Setup complete! Now let's make it so that when a user is logged in they only see *their* books.
 Update the `index` method in the BookController like so:
 
 ```php

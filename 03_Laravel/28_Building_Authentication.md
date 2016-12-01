@@ -1,13 +1,10 @@
 ## Introduction
-+ "Authentication"
++ Use of authentication in web apps
++ Define: Authentication
+    + Aka: Users, Authorization, Auth, etc.
     + Users can register/login/logout
     + App recognizes user
-    + "User" = visitor, logged in "Guest" = visitor, not logged in
-+ Use of authentication in web apps
-+ Laravel provides an "out of the box" authentication system
-    + Set it up
-    + Use it
-    + Customize it as needed
+    + Terms: **User** = visitor, logged in **Guest** = visitor, not logged in
 
 
 ## What we need...
@@ -15,12 +12,12 @@
 + Login page
 + Logout functionality
 + Forgot password page
-+ Ability to "recognize" the user
-    + Ability to lock down pages/features depending on whether visitor is User/Guest
-    + Ability to display different content depending on whether visitor is User/Guest, and if User, which User
++ Ability to &ldquo;recognize&rdquo; the user
+    + Lock down pages/features depending on whether visitor is User/Guest
+    + Display different content depending on whether visitor is User/Guest and which User
+    + Etc...
 
 Good news: Much of this is &ldquo;baked-in&rdquo; to Laravel...
-
 
 ### Auth config
 Open `config/auth.php` to see the default configurations for how authentication works. For our purposes, we don't have to change anything here, but you should read though the well-commented options.
@@ -74,7 +71,7 @@ The final two components we need is Routes and Views for a registration page, a 
 To quickly generate all these necessary files (with some useful boilerplate code), run `php artisan make:auth` in the root of your project:
 
 ```
-~/foobooks $
+~/foobooks $ php artisan make:auth
 Authentication scaffolding generated successfully.
 ```
 
@@ -248,9 +245,9 @@ At this point, you should have a working authentication system complete with log
 
 In the next note set, we'll look at examples of utilizing authentication, but before we conclude here, let's set up a Seeder for the `users` table.
 
-Like all the tables in your projects for this course, you want to seed your `users` table with sample data.
+Like all the tables in your project, you want to seed your `users` table with sample data.
 
-In this course, seeding the users table is important/required because it will save us time when helping you debug&mdash; if every student seeds with the same 2 example users (below) we can quickly log into your app without having to register a new user.
+In this course, seeding the `users` table is important/required because it will save us time when helping you debug&mdash; if every student seeds with the same 2 example users (below) we can quickly log into your app without having to register a new user.
 
 First step, create the `UsersTableSeeder`:
 

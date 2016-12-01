@@ -4,20 +4,20 @@
 + [Docs: Authorization](https://laravel.com/docs/5.3/authorization)
 
 
-## Auth::check()
+## Different display for User vs. Guest
 Adapt the Foobooks navigation menu:
 
-If the user *is* logged in they should these links:
+Users should see this:
 + Home
 + Add a book
 + Log out
 
-If the user is *not* logged in, they should see these links:
+Guests should see this:
 + Home
 + Register
 + Login
 
-To accomplish this, use the __`Auth::check()`__ method which returns `True` if the user is logged in or `False` if they are not.
+To accomplish this, you can use the __`Auth::check()`__ method which returns `True` if the user is logged in or `False` if they are not.
 
 In `resources/views/layouts/master.blade.php` the `<nav>` will be updated to look like this:
 
@@ -51,7 +51,7 @@ One way we could approach this is to update the BookController's `create` method
 
 ```php
 /**
- * Responds to requests to GET /books/create
+ * GET
  */
 public function create() {
     if(!Auth::check() ) {
@@ -106,11 +106,10 @@ If you are not logged in and you attempt to visit `http://localhost/books/create
 Then, if you successfully login, you'll be sent back to `http://localhost/books/create`.
 
 
-
 ## Restricting routes to guests only
 In the above examples we restricted routes to logged in users.
 
-On the flip side, you may also want to restrict routes so that only &ldquo;guests&rdquo; (i.e. non-logged in users) can see them.
+On the flip side, you may also want to restrict routes so that only guests (i.e. non-logged in users) can see them.
 
 For example, if your user is already logged in, you don't want them to be able to visit `http://localhost/login` or `http://localhost/register`
 
@@ -125,11 +124,11 @@ public function __construct()
 }
 ```
 
-This line is dictating that every method/action in LoginController will use the `guest` middleware, *except* for `logout`.
+This line is dictating that every method/action in LoginController will use the `guest` middleware, *except* for `logout`. (Note that this approach is applying the middleware via the Controller rather than the Routes as we did earlier.)
 
 So what does the `guest` Middleware do?
 
-Again we can refer to the `Kernel.php`:
+Again we can refer to `Kernel.php`:
 
 ```php
 protected $routeMiddleware = [
