@@ -1,5 +1,5 @@
-** Note: This bonus topic was last checked in Spring 2016, and has not been reviewed for Fall 2016.**
---
+**Note: This bonus topic was last checked in Spring 2016, and has not been reviewed for Fall 2016.**
+
 
 ## Validating for author not selected
 
